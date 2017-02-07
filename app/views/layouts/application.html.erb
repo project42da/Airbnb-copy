@@ -9,6 +9,11 @@
   </head>
 
   <body>
+    <%=render 'share/navbar-fixed-top'%>
+  	<p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
     <%= yield %>
+    
   </body>
 </html>
