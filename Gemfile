@@ -30,6 +30,7 @@ gem 'faker', '~> 1.7', '>= 1.7.3'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 
 gem 'devise', '~> 4.2'
+gem 'toastr-rails'
 
 gem 'devise-i18n', '~> 0.12.1'
 

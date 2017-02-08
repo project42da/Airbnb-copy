@@ -1,0 +1,12 @@
+<% unless flash.empty?%>
+	<script>
+		console.log('<%=flash%>');
+		<%flash.each do |f|%>
+			<%type = f[0].to_s.gsub('alert','warning').gsub('notice','success')%>
+			toastr['<%= type%>']('<%= f[1]%>')
+		<%end%>
+	</script>
+<%end%>
+
+<!-- flash[:notice] = "Email is incorrect" 의 경우-->
+<!-- notice가 f[0], Emails is incorrect 가 f[1] -->

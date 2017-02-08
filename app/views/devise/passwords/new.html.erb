@@ -3,7 +3,7 @@
 		<div class="col-sm-6 col-sm-offset-3">
 			<h3>비밀번호 재설정</h3>
 			<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-			  <%= devise_error_messages! %>
+			  <%= render 'share/devise-message'%>
 
 			  <div class="field">
 			    <%= f.label :email %><br />
