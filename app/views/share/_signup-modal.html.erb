@@ -1,0 +1,49 @@
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <h3>가입 절차를 시작합니다. 금방 끝나요!</h3>
+        <%=link_to "페이스북"%> 또는 <%=link_to "구글"%>로 회원 가입하세요.
+
+        <div class="signup-or-separator">
+          <span class="h6 signup-or-separator--text">또는</span>
+          <hr>
+        </div>
+
+      <!-- devise new_session -->
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true , placeholder: "이메일 주소"%>
+        </div>
+
+        <div class="field">
+          <%= f.label :username %><br />
+          <%= f.text_field :username, placeholder: "이름"%>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "off" , placeholder: "비밀번호 설정"%>
+        </div>
+        
+        <hr>
+
+        <div class="actions">
+          <%= f.submit "회원가입" %>
+        </div>
+
+        <hr>
+
+        이미 에어비앤비 계정이 있나요? <%= link_to "로그인", new_user_session_path %><br />
+      <% end %>
+
+      </div> 
+      <!-- modal-body end -->
+
+    </div>
+  </div>
+</div>

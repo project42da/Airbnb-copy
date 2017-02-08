@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Airbnb</title>
+    <title>애어비앤비</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,6 +10,9 @@
 
   <body>
     <%=render 'share/navbar-fixed-top'%>
+    <%=render 'share/login-modal'%>
+    <%=render 'share/signup-modal'%>
+
   	<p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
