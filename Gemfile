@@ -32,7 +32,7 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'devise', '~> 4.2'
 gem 'toastr-rails'
 
-gem 'devise-i18n', '~> 0.12.1'
+gem 'devise-i18n', '~> 0.12.1' #다중언어 서비스 지원시
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
