@@ -2,33 +2,48 @@
   
   <div class="row">
     <div class="col-md-3">
-      <h4>보안</h4>
+      <h4>프로필 수정</h4>
+      <%=link_to "프로필 보기", current_user, class:"btn btn-default"%>
     </div>
-    <div class="col-md-6">
-      <h3>비밀번호 변경</h3>
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= render 'share/devise-message'%>
 
-        <div class="field">
-          <%= f.label "이전 비밀번호" %><br />
-          <%= f.password_field :password, autocomplete: "off" %>
-        </div>
+    <div class="col-md-9">
+      <div class="panel panel-default">
+        <div class="panel-heading">필수사항</div>
+        <div class="container">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= render 'share/devise-message'%>
 
-        <div class="field">
-          <%= f.label "이전 비밀번호 확인" %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "off" %>
-        </div>
+            <div class="field">
+              <%= f.label "이름" %><br />
+              <%= f.text_field :username, autocomplete: "off" %>
+            </div>
 
-        <div class="field">
-          <%= f.label "새 비밀번호" %><br />
-          <%= f.password_field :current_password, autocomplete: "off" %>
-        </div>
-        <hr>
-        <div class="actions">
-          <%= f.submit "비밀번호 업데이트" %>
-        </div>
-      <% end %>
+            <div class="field">
+              <%= f.label "전화번호" %><br />
+              <%= f.text_field :phone_number, autocomplete: "off" %>
+            </div>
 
+            <div class="field">
+              <%= f.label "자기소개" %><br />
+              <%= f.text_area :description, autocomplete: "off" %>
+            </div>
+
+            <div class="field">
+              <%= f.label "새 비밀번호" %><br />
+              <%= f.password_field :password, autocomplete: "off" %>
+            </div>
+
+            <div class="field">
+              <%= f.label :password_confirmation, "비밀번호 확인" %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "off" %>
+            </div>
+            <hr>
+            <div class="actions">
+              <%= f.submit "저장하기" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

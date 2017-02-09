@@ -1,0 +1,28 @@
+<div class="container">
+  
+  <div class="row">
+    <div class="col-md-3">
+      <%=image_tag avatar_url(@user), style: "width: 100%;", class: "img-responsive"%>
+      <br>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          인증된 정보
+        </div>
+        <div class="panel-body">
+          인증된 정보 없음
+        </div>
+        <div class="panel-body">
+          <a href="#">인증 추가</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-9">
+      <h1>안녕하세요, <%=@user.username%>입니다!</h1>
+      <div class="h5"><%=@user.created_at%></div>
+      <div>
+        <%=link_to "프로필 수정", edit_user_registration_path%>
+      </div>
+    </div>
+  </div>
+</div>
