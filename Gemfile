@@ -34,6 +34,9 @@ gem 'toastr-rails'
 
 gem 'devise-i18n', '~> 0.12.1' #다중언어 서비스 지원시
 
+gem 'omniauth', '~> 1.4', '>= 1.4.1'
+gem 'omniauth-facebook', '~> 4.0'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
