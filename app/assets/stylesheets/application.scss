@@ -18,7 +18,12 @@
 @import "bootstrap";
 @import "toastr";
 
-body{
+* {
+  font-family: 'Spoqa Han Sans', 'Sans-serif';
+  font-weight: 100;
+}
+
+body,a{
 	color:#484848;
 }
 
@@ -27,3 +32,67 @@ body{
 	height: 26px;
 }
 
+.navbar-airbnb{
+	background-color: #fff;
+	height: 61px;
+	border-bottom: 1px solid black;
+}
+
+#toggleLogo>.caret{
+	position: relative;
+  right: -35px;
+  top: -25px;
+}
+
+ul.navbar-nav{
+	background-color: #fff;
+}
+.navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
+  background-color: transparent;
+  color:#00a699;
+}
+
+/*mobile*/
+@media screen and (max-width: 767px){
+	#toggleLogo, .navbar-nav > .mobileView{
+		display:block;
+	}
+	#toggleLogo>.caret.rotate{
+		transform: rotate(180deg);
+		transition: 0.3s;
+	}
+
+	#notToggleLogo, .navbar-nav > .mobileHide{
+		display:none;
+	}
+	.navbar-nav > li{
+		font-size: 1.3em;
+	}
+	.navbar-nav > li > a {
+		padding: 15px 25px;
+  }
+  hr.mobileView{
+  	margin: 10px 20px;
+  }
+
+}
+
+/*computer*/
+@media (min-width: 768px){
+	#toggleLogo, .navbar-nav > .mobileView{
+		display:none;
+	}
+	#notToggleLogo, .navbar-nav > .mobileHide{
+		display:block;
+	}
+
+	.navbar-nav > li {font-size: 14px;}
+	.navbar-nav > li > a {
+		height: 60px;
+		line-height: 30px;
+  }
+  .navbar-nav > li > a > img{
+  	position: relative;
+    top: -2px;
+	}
+}
