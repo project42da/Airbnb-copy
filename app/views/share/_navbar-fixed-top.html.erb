@@ -10,7 +10,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="mobileView"><%=link_to "홈", root_path %></li>
         <hr class="mobileView">
-        <li><a href="../navbar/">호스팅 하기</a></li>
+        <li><%=link_to "호스팅하기", new_room_path %></li>
         
       <%if(!current_user)%>
         <li><a data-toggle="modal" data-target="#signupModal" style="cursor: pointer;">회원가입</a></li>

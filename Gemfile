@@ -38,6 +38,8 @@ gem 'omniauth', '~> 1.4', '>= 1.4.1'
 gem 'omniauth-facebook', '~> 4.0'
 gem 'omniauth-google-oauth2', '~> 0.4.1'
 
+gem "font-awesome-rails"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

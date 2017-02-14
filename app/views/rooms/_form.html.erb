@@ -1,164 +1,190 @@
-<div class="panel panel-dafault">
-	<div class="panel-heading">
-		숙소 등록하기
-	</div>
-	<div class="panel-body">
-		<div class="container">
-			<%=form_for(@room) do |f|%>
-				<div class="row">
-					<div class="col-md-8">
-						<h3>등록하실 숙소 종류는 무엇인가요?</h3>
+<div class="container new-room">
+	<%=form_for(@room) do |f|%>
+		<div class="row">
+			<div class="col-md-8">
+				<h3>등록하실 숙소 종류는 무엇인가요?</h3>
 
-						<label for="room_home_type">숙소의 건물유형을 알려주세요.</label>
-						<%= f.text_field :home_type, list: 'home-type', placeholder:"건물유형"%>
-						<datalist id="home-type">
-						  <option value="단독주택">
-						  <option value="아파트">
-						  <option value="게스트하우스">
-						</datalist>
-						<br>
-						<label for="room_room_type">게스트가 묵을 방 유형</label>
-						<%= f.text_field :room_type, list: 'home-type', placeholder:"방 유형" %>
-						<datalist id="home-type">
-						  <option value="집 전체">
-						  <option value="개인실">
-						  <option value="다인실">
-						</datalist>
+				<label for="room_home_type">숙소의 건물유형을 알려주세요.</label>
+				<%= f.text_field :home_type, list: 'home-type', placeholder:"건물유형", class: "form-control"%>
+				<datalist id="home-type">
+				  <option value="단독주택">
+				  <option value="아파트">
+				  <option value="게스트하우스">
+				</datalist>
+				<br>
+				<label for="room_room_type">게스트가 묵을 방 유형</label>
+				<%= f.text_field :room_type, list: 'room-type', placeholder:"방 유형" , class: "form-control"%>
+				<datalist id="room-type">
+				  <option value="집 전체">
+				  <option value="개인실">
+				  <option value="다인실">
+				</datalist>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<i class="fa fa-lightbulb-o" aria-hidden="true"></i>	
 					</div>
-					<div class="col-md-4">
-						<p>
-							집 전체 : 게스트에게 별채를 포함한 집 전체를 빌려줍니다.
-
-							개인실 : 호스트와 공유하는 공간이 있긴 하지만 게스트에게 잠을 잘 수 있는 개인실이 제공됩니다.
-
-							다인실 : 게스트가 단독으로 쓸 수 있는 방이 제공되지 않습니다.
-						</p>
+					<div class="panel-body">
+						<strong>집 전체</strong> : 게스트에게 별채를 포함한 집 전체를 빌려줍니다. <br>
+						<strong>개인실</strong> : 호스트와 공유하는 공간이 있긴 하지만 게스트에게 잠을 잘 수 있는 개인실이 제공됩니다. <br>
+						<strong>다인실</strong> : 게스트가 단독으로 쓸 수 있는 방이 제공되지 않습니다. <br>
 					</div>
 				</div>
-				
-				<hr>
-
-				<div class="row">
-					<div class="col-md-8">
-					<h3>숙소에 얼마나 많은 인원이 숙박할 수 있나요?</h3>
-						<label for="room_accommodate">숙박인원</label><br>
-						<%=f.select :accommodate, [["1",1],["2",2],["3",3],["4",4],["5",5],["6+",6]], prompt: "숙박인원" %>
-						<br>
-
-						<label for="room_bed_room">게스트가 몇 개의 침실을 사용할 수 있나요?</label><br>
-						<%=f.select :bed_room, [["1",1],["2",2],["3",3],["4",4],["5",5],["6+",6]], prompt: "침실" %>
-						<br>
-						
-						<label for="room_bath_room">욕실은 몇 개인가요?</label><br>
-						<%=f.select :bath_room, [["1",1],["2",2],["3",3],["4",4],["5",5],["6+",6]], prompt: "욕실" %>
-					</div>
-
-					<div class="col-md-4">
-						<p>
-							회원님 숙소의 침대 수와 종류에 따라 몇 명의 인원이 불편함 없이 머물 수 있는지가 결정됩니다.침대 유형을 명시하면 게스트가 어떤 종류의 침대가 있는지 알 수 있습니다.
-						</p>
-					</div>			
-				</div>
-				
-				<hr>
-
-
-				<div class="row">
-					<div class="col-md-8">
-						<h3>정보를 제공해 주세요.</h3>
-						<p>사진, 간단한 설명, 제목등</p>
-
-						<label for="room_listing_name">숙소 이름지정</label><br>
-						<%=f.text_field :listing_name, placeholder: "숙소이름"%>
-
-						<label for="room_summary">숙소 설명을 작성하세요</label><br>
-						<%=f.text_area :summary, placeholder: "숙소의 장점, 가까운 명소, 멋진경치, 채광, 편안한 침대 등"%>
-
-						<label for="room_address">숙소 이름지정</label><br>
-						<%=f.text_field :address, placeholder: "숙소이름"%>
-					</div>
-
-					<div class="col-md-4">
-						<p>
-							여기에 작성한 설명이 숙소 페이지 맨 위에 표시됩니다. 게스트가 숙소를 검색할 때 일반적으로 궁금해 하는 질문 몇 가지를 제시해 보았습니다. 내용은 나중에 수정하거나 추가하실 수 있습니다.
-
-							또한, 개인적 배경과 관계없이 모든 게스트를 환영한다는 메시지를 숙소 설명에 포함할 수 있습니다.
-						</p>
-					</div>
-
-				</div>
-				
-				<hr>
-
-				<div class="row">
-					<h3>어떤 편의시설을 제공하시나요?</h3>
-					<div class="col-md-8">
-						<label for="room_is_tv">TV</label>
-							<%=f.check_box :is_tv%><br>
-						<label for="room_is_kitchen">부엌</label>
-							<%=f.check_box :is_kitchen%><br>
-						<label for="room_is_air">에어컨</label>
-							<%=f.check_box :is_air%><br>
-						<label for="room_is_heating">히터</label>
-							<%=f.check_box :is_heating%><br>
-						<label for="room_is_wifi">무선인터넷</label>
-							<%=f.check_box :is_wifi%><br>
-					</div>
-
-					<div class="col-md-4">
-						<p>일부 호스트는 조식 또는 커피와 차만 제공하기도 합니다. 필수 사항은 아니지만, 이런 서비스를 제공하면 게스트가 보다 환영받는다고 느낄 수 있습니다.</p>
-					</div>
-				</div>
-				
-				<hr>
-
-				<div class="row">
-					<h3>기본요금</h3>
-					<p>기본 요금은 회원님이 정한 기본 1박당 요금입니다.</p>
-
-					<div class="col-md-8">
-						<div class="form-group">
-							<div class="input-group">
-								<div class="input-group-addon">KRW(원)</div>
-								<%=f.text_field :price, placeholder: "50,000", class: "form-control"%> 
-							</div>
-						</div>
-							
-					</div>
-
-					<div class="col-md-4">
-						<p>기본 1박당 요금 처음에는 요금을 낮게 책정했다가 긍정적인 리뷰를 받은 다음에 요금을 올리는 호스트들도 있습니다.수요에 따라 가격을 변경할 수 있습니다. 예를 들어, 성수기에 가격을 높게 책정하면 더 많은 수익을 얻을 수 있고, 비수기에 가격을 낮게 책정하면 더 많은 예약을 받을 수 있습니다.</p>
-					</div>
-				</div>
-				
-				<hr>
-				<div class="row">
-				<h3>체크인/아웃 가능 시간을 선택해 주세요.</h3>
-
-					<div class="col-md-6">
-						<label for="room_check_in">체크인</label><br>
-					  <%= f.time_field :check_in, 
-					  	value: "%H:%M", 
-					  	min: 'hh:mm:ss', 
-					  	max: 'hh:mm:ss'
-					  %>
-					</div>
-
-					<div class="col-md-6">
-					  <label for="room_check_out">체크아웃</label><br>
-					  <%= f.time_field :check_out, 
-					  	value: "%H:%M", 
-					  	min: 'hh:mm:ss', 
-					  	max: 'hh:mm:ss'
-					  %>
-				  </div>
-				</div>
-
-				<div class="row">
-					<h3>예약 가능 여부 설정</h3>
-					<%=f.check_box :active%>
-				</div>
-			<%end%>
+			</div>
 		</div>
-	</div>
+		
+		<hr>
+
+		<div class="row">
+			<div class="col-md-8">
+			<h3>숙소에 얼마나 많은 인원이 숙박할 수 있나요?</h3>
+
+				<label for="room_accommodate">숙박인원</label><br>
+				<%=f.select :accommodate, [["1",1],["2",2],["3",3],["4",4],["5",5],["6+",6]], prompt: "숙박인원"%>
+				<br><br>
+
+				<label for="room_bed_room">게스트가 몇 개의 침실을 사용할 수 있나요?</label><br>
+				<%=f.select :bed_room, [["1",1],["2",2],["3",3],["4",4],["5",5],["6+",6]], prompt: "침실" %>
+				<br><br>
+
+				<label for="room_bath_room">욕실은 몇 개인가요? </label><br>
+				<%=f.select :bath_room, [["1",1],["2",2],["3",3],["4",4],["5",5],["6+",6]], prompt: "욕실" %>
+			</div>
+
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<i class="fa fa-lightbulb-o" aria-hidden="true"></i>	
+					</div>
+					<div class="panel-body">
+						회원님 숙소의 침대 수와 종류에 따라 몇 명의 인원이 불편함 없이 머물 수 있는지가 결정됩니다. <br>
+						침대 유형을 명시하면 게스트가 어떤 종류의 침대가 있는지 알 수 있습니다.
+					</div>
+				</div>
+			</div>			
+		</div>
+		
+		<hr>
+
+
+		<div class="row">
+			<div class="col-md-8">
+				<h3>정보를 제공해 주세요.</h3>
+				<p>사진, 간단한 설명, 제목등</p>
+
+				<label for="room_listing_name">숙소 이름지정</label>
+				<%=f.text_field :listing_name, placeholder: "숙소이름" , class: "form-control"%><br>
+
+				<label for="room_summary">숙소 설명을 작성하세요</label>
+				<%=f.text_area :summary, rows:5, placeholder: "숙소의 장점, 가까운 명소, 멋진경치, 채광, 편안한 침대 등" , class: "form-control"%><br>
+
+				<label for="room_address">숙소 위치</label>
+				<%=f.text_field :address, placeholder: "주소", class: "form-control"%><br>
+			</div>
+
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<i class="fa fa-lightbulb-o" aria-hidden="true"></i>	
+					</div>
+					<div class="panel-body">
+						여기에 작성한 설명이 숙소 페이지 맨 위에 표시됩니다. 게스트가 숙소를 검색할 때 일반적으로 궁금해 하는 질문 몇 가지를 제시해 보았습니다. 내용은 나중에 수정하거나 추가하실 수 있습니다. <br>
+						또한, 개인적 배경과 관계없이 모든 게스트를 환영한다는 메시지를 숙소 설명에 포함할 수 있습니다.
+					</div>
+				</div>
+			</div>
+
+		</div>
+		
+		<hr>
+
+		<div class="row">
+			<div class="col-md-8">
+			<h3>어떤 편의시설을 제공하시나요?</h3>
+				<label for="room_is_tv">TV</label>
+					<%=f.check_box :is_tv%><br>
+				<label for="room_is_kitchen">부엌</label>
+					<%=f.check_box :is_kitchen%><br>
+				<label for="room_is_air">에어컨</label>
+					<%=f.check_box :is_air%><br>
+				<label for="room_is_heating">히터</label>
+					<%=f.check_box :is_heating%><br>
+				<label for="room_is_wifi">무선인터넷</label>
+					<%=f.check_box :is_wifi%><br>
+			</div>
+
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<i class="fa fa-lightbulb-o" aria-hidden="true"></i>	
+					</div>
+					<div class="panel-body">
+						일부 호스트는 조식 또는 커피와 차만 제공하기도 합니다. 필수 사항은 아니지만, 이런 서비스를 제공하면 게스트가 보다 환영받는다고 느낄 수 있습니다.
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<hr>
+
+		<div class="row">
+			<div class="col-md-8">
+				<h3>기본요금</h3>
+				<p>기본 요금은 회원님이 정한 기본 1박당 요금입니다.</p>
+
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">KRW(원)</div>
+						<%=f.text_field :price, placeholder: "50,000", class: "form-control"%> 
+					</div>
+				</div>
+					
+			</div>
+
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<i class="fa fa-lightbulb-o" aria-hidden="true"></i>	
+					</div>
+					<div class="panel-body">
+						기본 1박당 요금 처음에는 요금을 낮게 책정했다가 긍정적인 리뷰를 받은 다음에 요금을 올리는 호스트들도 있습니다.수요에 따라 가격을 변경할 수 있습니다. <br>
+						예를 들어, 성수기에 가격을 높게 책정하면 더 많은 수익을 얻을 수 있고, 비수기에 가격을 낮게 책정하면 더 많은 예약을 받을 수 있습니다.
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<hr>
+		<div class="row">
+		<h3>체크인/아웃 가능 시간을 선택해 주세요.</h3>
+
+			<div class="col-md-6">
+				<label for="room_check_in">체크인</label><br>
+			  <%= f.time_field :check_in, 
+			  	value: "%H:%M", 
+			  	min: 'hh:mm:ss', 
+			  	max: 'hh:mm:ss'
+			  %>
+			</div>
+
+			<div class="col-md-6">
+			  <label for="room_check_out">체크아웃</label><br>
+			  <%= f.time_field :check_out, 
+			  	value: "%H:%M", 
+			  	min: 'hh:mm:ss', 
+			  	max: 'hh:mm:ss'
+			  %>
+		  </div>
+		</div>
+
+		<hr>
+
+		<div class="row">
+			<h3>예약 가능 여부 설정</h3>
+			<%=f.check_box :active%>
+		</div>
+		<hr>
+		<%=f.submit "완료", class: "btn btn-lg btn-green"%>
+	<%end%>
 </div>

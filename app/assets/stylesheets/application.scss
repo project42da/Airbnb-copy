@@ -17,6 +17,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "toastr";
+@import "font-awesome";
 
 * {
   font-family: 'Spoqa Han Sans', 'Sans-serif';
@@ -30,6 +31,10 @@ body,a{
 .avatar-small{
 	width: 26px;
 	height: 26px;
+}
+.btn-green{
+	background-color: #00a699;
+	color: #fff;
 }
 
 .navbar-airbnb{
@@ -51,6 +56,56 @@ ul.navbar-nav{
   background-color: transparent;
   color:#00a699;
 }
+
+.new-room {
+	margin-bottom: 30px;
+}
+
+.new-room .panel i{
+	font-size: 30px;
+}
+.new-room .panel>.panel-heading{
+	background-color: #fff;
+	border-bottom: 0;
+	padding-bottom: 0;
+}
+
+label {
+	font-size: 1.2em;
+}
+
+textarea{
+	resize:none;
+}
+
+select {
+	width: 100%;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	padding: 10px;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+}
+
+input[type="checkbox"]{
+	width: 20px;
+  height: 20px;
+  -webkit-appearance: none;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  margin-left: 10px;
+	vertical-align: sub;
+}
+
+input[type="checkbox"]:checked{
+	outline: 0;
+  outline-offset: 0;
+  background: #00a699;
+  border-color: #00a699;
+}
+
+
 
 /*mobile*/
 @media screen and (max-width: 767px){
@@ -74,6 +129,10 @@ ul.navbar-nav{
   hr.mobileView{
   	margin: 10px 20px;
   }
+
+  .new-room .panel{
+		margin-top: 30px;
+	}
 
 }
 
