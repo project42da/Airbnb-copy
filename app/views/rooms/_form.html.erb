@@ -1,5 +1,5 @@
 <div class="container new-room">
-	<%=form_for(@room) do |f|%>
+	<%=form_for(@room, html: {multipart: true}) do |f|%>
 		<div class="row">
 			<div class="col-md-8">
 				<h3>등록하실 숙소 종류는 무엇인가요?</h3>
@@ -81,7 +81,23 @@
 
 				<label for="room_address">숙소 위치</label>
 				<%=f.text_field :address, placeholder: "주소", class: "form-control"%><br>
+
+				<label for="room_address">숙소 사진</label>
+				<span class="btn btn-default btn-file">
+					<i class="fa fa-cloud-upload fa-lg"></i> 사진올리기
+					<%=file_field_tag "images[]", type: :file, multiple: true%>
+				</span>
+				
+
+				<br>
+
+				<div id="photos">
+					<%= render 'photos/list'%>
+				</div>
+
 			</div>
+			
+			
 
 			<div class="col-md-4">
 				<div class="panel panel-default">

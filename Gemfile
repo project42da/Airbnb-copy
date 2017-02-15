@@ -40,6 +40,8 @@ gem 'omniauth-google-oauth2', '~> 0.4.1'
 
 gem "font-awesome-rails"
 
+gem "paperclip", "~> 5.0.0"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

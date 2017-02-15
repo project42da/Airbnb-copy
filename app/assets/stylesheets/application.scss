@@ -105,7 +105,34 @@ input[type="checkbox"]:checked{
   border-color: #00a699;
 }
 
+.btn-file{
+	position: relative;
+	overflow: hidden;
+}
 
+.btn-file input[type="file"]{
+	position: absolute;
+	top: 0;
+	right: 0;
+	min-width: 100%;
+	min-height: 100%;
+	font-size: 100px;
+	text-align: right;
+	filter: alpha(opacity=0);
+	opacity: 0;
+	outline: none;
+	background-color: #fff;
+	cursor: pointer;
+	display: block;
+}
+
+.panel-heading.preview{
+  padding: 0;
+}
+
+.panel-heading.preview img{
+  width: 100%;
+}
 
 /*mobile*/
 @media screen and (max-width: 767px){
