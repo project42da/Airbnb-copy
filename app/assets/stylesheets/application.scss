@@ -134,6 +134,16 @@ input[type="checkbox"]:checked{
   width: 100%;
 }
 
+#preview {
+  margin-bottom: 20px;
+  margin-left: 0;
+
+  border: 1px solid #ddd;
+  background-color: #eee;
+  border-radius: 3px;
+  padding: 10px;
+}
+
 /*mobile*/
 @media screen and (max-width: 767px){
 	#toggleLogo, .navbar-nav > .mobileView{

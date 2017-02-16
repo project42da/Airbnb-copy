@@ -1,4 +1,5 @@
 <% if @photos%>
+	<h5>업로드된 사진</h5>
 	<div class="row">
 		<%@photos.each do |photo|%>
 			<div class="col-md-4">
@@ -20,3 +21,29 @@
 		<%end%>
 	</div>
 <%end%>
+
+
+<script>
+	$("#images_").on('change',function() {
+		
+		var imageArray = '';
+		var fileList = this.files;
+		var len = fileList.length;
+
+		for(var i = 0; i < len; i++){
+		  //get a blob 
+		  var t = window.URL || window.webkitURL;
+		  var objectUrl = t.createObjectURL(fileList[i]);
+		  imageArray += `<div class="col-md-4">
+					<div class="panel panel-pefault">
+						<div class="panel-heading preview">
+							<img src="${objectUrl}" />
+						</div>
+					</div>
+				</div>
+		  `;
+		}
+		console.log(imageArray);
+		$('#preview').html(imageArray);
+	});
+</script>
