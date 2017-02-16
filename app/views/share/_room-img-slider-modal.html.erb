@@ -1,0 +1,32 @@
+<div class="modal fade" id="imgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+       
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <%@room.photos.each do |photo|%>
+            <div class="item">
+              <%=image_tag photo.image.url(), class: "img-responsive"%>
+            </div>
+          <%end%>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('#myCarousel .item:first-child').addClass('active')
+</script>
