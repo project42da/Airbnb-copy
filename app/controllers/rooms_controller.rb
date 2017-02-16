@@ -46,7 +46,7 @@ class RoomsController < ApplicationController
 
       if @room.save
         if params[:images]
-          params[images].each do |image|
+          params[:images].each do |image|
             @room.photos.create(image:image)
           end
         end

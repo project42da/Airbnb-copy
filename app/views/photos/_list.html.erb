@@ -8,7 +8,11 @@
 					</div>
 					<div class="panel-body">
 						<span class="pull-right">
-							<i class="fa fa-times fa-lg"></i>
+							
+							<%= link_to photo, remote: true, method: :delete, data: {confirm: "선택한 사진이 삭제됩니다."} do%>
+								<i class="fa fa-times fa-lg"></i>
+							<%end%>
+
 						</span>
 					</div>
 				</div>
