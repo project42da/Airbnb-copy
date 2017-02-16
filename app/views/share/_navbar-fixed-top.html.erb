@@ -10,7 +10,17 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="mobileView"><%=link_to "홈", root_path %></li>
         <hr class="mobileView">
-        <li><%=link_to "호스팅하기", new_room_path %></li>
+        <li class="mobileView"><%=link_to "호스팅하기", new_room_path %></li>
+
+        <li class="dropdown mobileHide">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            호스팅
+          </a>
+          <ul class="dropdown-menu">
+            <li><%=link_to "숙소 등록", new_room_path %></li>
+            <li><%=link_to "숙소 관리"%></li>
+          </ul>
+        </li>
         
       <%if(!current_user)%>
         <li><a data-toggle="modal" data-target="#signupModal" style="cursor: pointer;">회원가입</a></li>

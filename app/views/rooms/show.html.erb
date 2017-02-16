@@ -1,2 +1,115 @@
-<h1>Rooms#show</h1>
-<p>Find me in app/views/rooms/show.html.erb</p>
+<div class="cover-image-container">
+	<% if @room.photos.length > 0%>
+		<div class="cover-img" style="background-image: url(<%=@room.photos[0].image.url()%>);"></div>
+	<%else%>
+		<div class="cover-img cover-img-placeholder"></div>
+	<%end%>
+</div>
+<!-- summary -->
+<div class="container summary">
+	<div class="row">
+		<div class="col-md-8">
+			<div class="row">
+				<div class="col-md-3 text-center">
+					<br>
+					<%=image_tag avatar_url(@room.user), class: "img-circle avatar-large"%>
+					<h5><%= @room.user.username%></h5>
+				</div>
+
+				<div class="col-md-9">
+					<div class="summary-room-info">
+						<h3><%=@room.listing_name%></h3>
+						<p><%=@room.address%></p>
+					</div>
+					<div class="row text-center">
+						<div class="col-xs-3">
+							<i class="fa fa-home fa-2x" aria-hidden="true"></i>
+							<p class="h5"><%=@room.room_type%></p>
+						</div>
+						<div class="col-xs-3">
+							<i class="fa fa-user fa-2x" aria-hidden="true"></i>
+							<p class="h5">인원 <%=@room.accommodate%>명</p>
+						</div>
+						<div class="col-xs-3">
+							<i class="fa fa-bath fa-2x" aria-hidden="true"></i>
+							<p class="h5">욕실 <%=@room.bath_room%>개</p>
+						</div>
+						<div class="col-xs-3">
+							<i class="fa fa-bed fa-2x" aria-hidden="true"></i>
+							<p class="h5">침실 <%=@room.bed_room%>개</p>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="col-md-4">
+		</div>
+	</div>
+</div>
+
+<hr>
+
+<div class="container details">
+
+	<h4>상세설명</h4>
+	<p></p>
+	<hr>
+	
+	<div class="row">
+		<div class="col-md-2">숙소</div>
+		<div class="col-md-3">
+			<ul>
+				<li>숙박 가능 인원: <span class="h5"><%=@room.accommodate%></span></li>
+				<li>욕실: <span class="h5"><%=@room.bath_room%></span></li>
+				<li>침실: <span class="h5">	<%=@room.bed_room%></span></li>
+				<li>집 유형: <span class="h5"><%=@room.home_type%></span></li>
+			</ul>
+		</div>
+		<div class="col-md-3">
+			<ul>
+				<li>숙소 유형: <span class="h5"><%=@room.room_type%></span></li>
+				<li>체크인: <span class="h5"><%=@room.check_in.strftime("%p %I시 %M분 ")%></span></li>
+				<li>체크아웃: <span class="h5"><%=@room.check_out.strftime("%p %I시 %M분 ")%></span></li>
+			</ul>
+		</div>
+	</div>
+	<hr>
+
+	<div class="row">
+		<div class="col-md-2">시설</div>
+		<div class="col-md-3">
+			<ul>
+				<%=@room.is_tv ? raw("<li class=\"h5\"><i class=\"fa fa-tv\" aria-hidden=\"true\"></i> TV</li>") : raw("<li><del>TV</del><li>")%>
+				<%=@room.is_kitchen ? raw("<li class=\"h5\"><li class=\"h5\"><i class=\"fa fa-cutlery\" aria-hidden=\"true\"></i> 부엌</li>") : raw("<li><del>부엌</del><li>")%>
+				<%=@room.is_air ? raw("<li class=\"h5\"><li class=\"h5\"><i class=\"fa fa-snowflake-o\" aria-hidden=\"true\"></i> 에어컨</li>") : raw("<li><del>에어컨</del><li>")%>
+			</ul>
+		</div>
+		<div class="col-md-3">
+			<ul>
+				<%=@room.is_heating ? raw("<li class=\"h5\"><li class=\"h5\"><i class=\"fa fa-thermometer-2\" aria-hidden=\"true\"></i> 히터</li>") : raw("<li><del>히터</del><li>")%>
+				<%=@room.is_wifi ? raw("<li class=\"h5\"><li class=\"h5\"><i class=\"fa fa-wifi\" aria-hidden=\"true\"></i> 무선 인터넷</li>") : raw("<li><del>무선 인터넷</del><li>")%>
+			</ul>
+		</div>
+	</div>
+	<hr>
+
+	<div class="row">
+		<div class="col-md-2">설명</div>
+		<div class="col-md-6"><%=@room.summary%></div>
+	</div>
+	<hr>
+
+	<div class="row">
+		<div class="col-md-2">숙소 이용규칙</div>
+		<div class="col-md-6">체크인은 <%=@room.check_in.strftime("%H시 :%M ")%> 이후입니다.</div>
+	</div>
+	<hr>
+</div>
+
+<!-- reviews -->
+<div class="container review">
+	
+</div>

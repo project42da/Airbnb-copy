@@ -1,4 +1,4 @@
-<div class="container new-room">
+<div class="container new-room margin-top">
 	<%=form_for(@room, html: {multipart: true}) do |f|%>
 		<div class="row">
 			<div class="col-md-8">
@@ -94,7 +94,7 @@
 				<div id="photos">
 					<h5>사진 미리보기</h5>
 					<div id="preview" class="row text-center">
-						미리보기할 사진이 없습니다.
+						미리보기 할 사진이 없습니다.
 					</div>
 					<%= render 'photos/list'%>
 				</div>

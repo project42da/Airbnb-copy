@@ -1,2 +1,36 @@
-<h1>Rooms#index</h1>
-<p>Find me in app/views/rooms/index.html.erb</p>
+<div class="container margin-top">
+	<div class="row">
+		<div class="col-md-3">
+			<ul>
+				<li class="h4 active"><%=link_to("숙소 목록", rooms_path)%></li>
+				<li class="h4"><%=link_to("예약 관리")%></li>
+			</ul>
+			<br>
+		</div>
+		<div class="col-md-9">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					운영중인 숙소
+				</div>
+				<div class="panel-body">
+					<% @rooms.each do |room|%>
+						<div class="row">
+							<div class="col-md-5">
+								<% if room.photos.length > 0%>
+									<%=image_tag(room.photos[0].image.url(:thumb))%>
+								<%else%>
+									<%=image_tag("missing", class: "img-responsive")%>
+								<%end%>
+							</div>
+							<div class="col-md-7">
+								<h4><%=room.listing_name%></h4>
+								<p>최종 업데이트: <%=room.updated_at.strftime("%Y년 %m월 %d일")%></p>
+								<%=link_to "정보 수정", edit_room_path(room), class: 'btn btn-green'%>
+							</div>
+						</div>
+					<%end%>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
