@@ -76,6 +76,7 @@ class RoomsController < ApplicationController
       :listing_name,
       :summary,
       :address,
+      :kor_address,
       :is_tv,
       :is_kitchen,
       :is_air,

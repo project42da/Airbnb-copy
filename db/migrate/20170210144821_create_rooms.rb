@@ -9,6 +9,7 @@ class CreateRooms < ActiveRecord::Migration[5.0]
       t.string :listing_name
       t.text :summary
       t.string :address
+      t.string :kor_address
       t.boolean :is_tv
       t.boolean :is_kitchen
       t.boolean :is_air

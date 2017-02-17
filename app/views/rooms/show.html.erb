@@ -25,7 +25,7 @@
 				<div class="col-md-9">
 					<div class="summary-room-info">
 						<h3><%=@room.listing_name%></h3>
-						<p id="address">서울특별시 종로구 종로1.2.3.4가동 사직로 161</p>
+						<p id="address"><%=@room.kor_address%></p>
 					</div>
 					<div class="row text-center">
 						<div class="col-xs-3">
@@ -134,8 +134,9 @@
 			<p>에어비앤비를 이용하면 누군가의 소중한 집에 머무르는 것입니다.</p>
 		</div>
 		<hr class="col-md-8">
-
-		<div id="map" style="width: 100%; height: 648px;"></div>
+		<div class="col-md-12">
+			<div id="map" style="width: 100%; height: 648px;"></div>
+		</div>
 	</div>
 </div>
 
@@ -143,7 +144,25 @@
 
 <div class="container">
 	<div class="row">
-		
+		<div class="col-md-12">
+			<br>
+			<h4>근처 또 다른 숙소</h4>
+			<br>
+		</div>
+
+		<%for room in @room.nearbys(10, units: :km)%>
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading preview">
+						<%=image_tag room.photos[0].image.url(:medium)%>
+					</div>
+					<div class="panel-body">
+						<h4><%=link_to room.listing_name, room%></h4>
+						<%=room.room_type%> - 거리: <%=room.distance.round(2)%> 킬로미터
+					</div>
+				</div>
+			</div>
+		<%end%>
 	</div>
 </div>
 

@@ -80,9 +80,30 @@
 				<%=f.text_area :summary, rows:5, placeholder: "숙소의 장점, 가까운 명소, 멋진경치, 채광, 편안한 침대 등" , class: "form-control"%><br>
 
 				<label for="room_address">숙소 위치</label>
-				<%=f.text_field :address, placeholder: "주소", class: "form-control"%><br>
+				<!-- onchange 이벤트시 initMap()을 실행한다. -->
+				<%=f.text_field :address, placeholder: "영문주소(필수)", class: "form-control", onchange: "initMap()"%><br>
 
-				<label for="room_address">숙소 사진</label>
+				<%=f.text_field :kor_address, placeholder: "한글주소(영문 주소값이 있으면 자동으로 생성됩니다.)", class: "form-control"%><br>
+				<!-- 영문주소를 자동으로 한글주소로 바꿔 :kor_address에 기입해주는 메서드 순수 js로 작성하는 버릇을 갖자-->
+				<script>
+					function initMap() {
+					  var address = document.getElementById('room_address').value;
+						var geocoder = new google.maps.Geocoder();
+	  				geocodeAddress(geocoder,address);	
+					}
+
+  				function geocodeAddress(geocoder,address){
+  					geocoder.geocode({'address': address}, function(results, status){
+  						geocoder.geocode({'location': results[0].geometry.location}, function(results, status){
+  							console.log(results[0].formatted_address);
+  							var kor_address = document.getElementById('room_kor_address');
+  							kor_address.value = results[0].formatted_address;
+  						})
+  					});
+  				}
+				</script>
+
+				<label>숙소 사진</label><br>
 				<span class="btn btn-default btn-file">
 					<i class="fa fa-cloud-upload fa-lg"></i> 사진올리기
 					<%=file_field_tag "images[]", type: :file, multiple: true%>
