@@ -1,12 +1,14 @@
 <div class="cover-image-container">
 	<% if @room.photos.length > 0%>
-		<div class="cover-img" style="background-image: url(<%=@room.photos[0].image.url()%>);"></div>
+		<div class="cover-img" style="background-image: url(<%=@room.photos[0].image.url()%>);">
+			<a class="btn btn-default" data-toggle="modal" data-target="#imgModal" style="cursor: pointer;">사진보기</a>
+		</div>
 	<%else%>
 		<div class="cover-img cover-img-placeholder"></div>
 	<%end%>
 </div>
 <!-- modal -->
-<a data-toggle="modal" data-target="#imgModal" style="cursor: pointer;">사진보기</a>
+
 <%=render 'share/room-img-slider-modal'%>
 
 <!-- summary -->
@@ -23,7 +25,7 @@
 				<div class="col-md-9">
 					<div class="summary-room-info">
 						<h3><%=@room.listing_name%></h3>
-						<p><%=@room.address%></p>
+						<p id="address">서울특별시 종로구 종로1.2.3.4가동 사직로 161</p>
 					</div>
 					<div class="row text-center">
 						<div class="col-xs-3">
@@ -57,11 +59,14 @@
 <hr>
 
 <div class="container details">
+	<div class="row">
+		<div class="col-md-12">
+			<h4>상세설명</h4>
+			<p></p>	
+		</div>
+		<hr class="col-md-8">	
+	</div>
 
-	<h4>상세설명</h4>
-	<p></p>
-	<hr>
-	
 	<div class="row">
 		<div class="col-md-2">숙소</div>
 		<div class="col-md-3">
@@ -79,8 +84,8 @@
 				<li>체크아웃: <span class="h5"><%=@room.check_out.strftime("%p %I시 %M분 ")%></span></li>
 			</ul>
 		</div>
+		<hr class="col-md-8">
 	</div>
-	<hr>
 
 	<div class="row">
 		<div class="col-md-2">시설</div>
@@ -97,23 +102,50 @@
 				<%=@room.is_wifi ? raw("<li class=\"h5\"><li class=\"h5\"><i class=\"fa fa-wifi\" aria-hidden=\"true\"></i> 무선 인터넷</li>") : raw("<li><del>무선 인터넷</del><li>")%>
 			</ul>
 		</div>
+		<hr class="col-md-8">
 	</div>
-	<hr>
 
 	<div class="row">
 		<div class="col-md-2">설명</div>
 		<div class="col-md-6"><%=@room.summary%></div>
+		<hr class="col-md-8">
 	</div>
-	<hr>
 
 	<div class="row">
 		<div class="col-md-2">숙소 이용규칙</div>
 		<div class="col-md-6">체크인은 <%=@room.check_in.strftime("%H시 :%M ")%> 이후입니다.</div>
 	</div>
-	<hr>
+	
 </div>
+
+<hr>
 
 <!-- reviews -->
 <div class="container review">
 	
 </div>
+
+
+<!-- map -->
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h4>숙소설명</h4>
+			<p>에어비앤비를 이용하면 누군가의 소중한 집에 머무르는 것입니다.</p>
+		</div>
+		<hr class="col-md-8">
+
+		<div id="map" style="width: 100%; height: 648px;"></div>
+	</div>
+</div>
+
+<!-- nearby -->
+
+<div class="container">
+	<div class="row">
+		
+	</div>
+</div>
+
+
+<hr>

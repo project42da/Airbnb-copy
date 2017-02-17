@@ -16,6 +16,8 @@
     <%=render 'share/message'%>
     
     <%= yield %>
-    
+  <script async defer 
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeBIFHUVsXXu_od8C0Z8m7s3pvE7CXKxs&v=3&libraries=places,drawing,geometry&callback=initMap" onerror="googleError()">
+  </script>
   </body>
 </html>

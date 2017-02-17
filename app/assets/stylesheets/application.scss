@@ -175,6 +175,13 @@ input[type="checkbox"]:checked{
 	height: 100%;
 	-webkit-background-size: cover;
 	background-size: cover;
+	position: relative;
+}
+
+.cover-img .btn{
+	position: absolute;
+  top: 350px;
+  left: 30px;
 }
 .cover-img-placeholder{
 	background-image: image-url("room_default_main.png");
@@ -222,7 +229,14 @@ input[type="checkbox"]:checked{
 	.summary-room-info{
 		text-align: center;
 	}
+	
+	.modal-dialog {
+    margin: 60px auto;
+	}
 
+	.cover-img .btn{
+	  right: 30px;
+	}
 }
 
 /*computer*/
@@ -242,5 +256,9 @@ input[type="checkbox"]:checked{
   .navbar-nav > li > a > img{
   	position: relative;
     top: -2px;
+	}
+	.modal-dialog {
+    width: 700px;
+    margin: 60px auto;
 	}
 }
