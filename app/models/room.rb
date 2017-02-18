@@ -5,6 +5,18 @@ class Room < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
+  # 필터링할 욕의 종류
+  words = ["shit", "fuck", "hell"]
+  
+  # 저장전에 실행
+  before_save{ 
+    words.each do |word| 
+      len = word.length
+      self.summary.gsub!(/#{word}/, '*'*len) if(self.summary.include?(word))
+    end
+  }
+
+
   validates :home_type, presence: true
   validates :room_type, presence: true
   validates :accommodate, presence: true
