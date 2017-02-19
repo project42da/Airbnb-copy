@@ -18,23 +18,117 @@
 				<%=f.text_field :end_date, placeholder: "년/월/일", class: "form-control"%>
 			</div>
 			
-			<br>
 			<%=f.hidden_field :room_id, value: @room.id%>
 			<%=f.hidden_field :price, value: @room.price%>
+			<%=f.hidden_field :total, id: 'reservation_total'%>
 			<div class="col-xs-12">
-				<%=f.submit "예약하기", class: "btn btn-green reservation-btn"%>
+				<p id="message" style="text-align: center; color: #ff0000; margin-top: 10px; display: none;"></p>
+				<div id="preview_price" style="display: none;">
+					<table>
+						<tbody>
+							<tr>
+								<th>￦<%=number_with_delimiter(@room.price, :delimiter => ',')%> x <span class="days"></span>박</th>
+								<td class="price_multiple_days"></td>
+							</tr>
+							<tr>
+								<th>수수료</th>
+								<td>￦40000</td>
+							</tr>
+							<tr class="last_table_row">
+								<th>합계</th>
+								<td class="total">￦<%=@room.price*4+40000%></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<br>
+			<div class="col-xs-12">
+				<%=f.submit "예약하기", class: "btn btn-green reservation-btn", disabled: 'true'%>
 			</div>			
 			<%end%>
 		</div>
 	</div>
 </div>
 <script>
-	(function(){
-		$('#reservation_start_date').datepicker({
-			dateFormat: 'yy/mm/dd'
-		});
-		$('#reservation_end_date').datepicker({
-			dateFormat: 'yy/mm/dd'
+	function unavailable(date){
+		dmy = date.getDate() + "-" + (date.getMonth()+1) + "-" +date.getFullYear();
+		return [$.inArray(dmy, unavailableDates) == -1];
+	}
+
+	var $start_date,$end_date;
+
+	$(function(){
+
+		unavailableDates = [];
+
+		$.ajax({
+			url: '/preload',
+			data: {'room_id': <%=@room.id%>},
+			dataType: 'json',
+			success: function(data){
+				$.each(data, function(arrID, arrValue){
+					for(var d = new Date(arrValue.start_date); d <= new Date(arrValue.end_date); d.setDate(d.getDate()+1)){
+						console.log(d);
+						unavailableDates.push($.datepicker.formatDate('d-m-yy', d));
+					}
+				})
+			}
 		})
-	})()
+		$start_date = $('#reservation_start_date');
+		$start_date.datepicker({
+			dateFormat: 'yy/mm/dd',
+			minDate: 0,
+			maxDate: '3m',
+			beforeShowDay: unavailable,
+			onSelect: function(selected){
+				$('#reservation_end_date').datepicker('option', 'minDate', selected);
+			}
+		});
+
+		$end_date = $('#reservation_end_date');
+		$end_date.datepicker({
+			dateFormat: 'yy/mm/dd',
+			minDate: 0,
+			maxDate: '3m',
+			beforeShowDay: unavailable,
+			onSelect: function(selected){
+				$('#reservation_start_date').datepicker('option', 'maxDate', selected);
+				$start_date_get = $start_date.datepicker('getDate');
+				$end_date_get = $end_date.datepicker('getDate');
+
+				var days = ($end_date_get - $start_date_get)/1000/60/60/24+1;
+				// ms단위로 day를 나타내기 때문
+				var total = days*<%=@room.price%>;
+				var input = {
+					'start_date': $start_date_get,
+					'end_date': $end_date_get,
+					'room_id': <%=@room.id%>
+				}
+
+				$.ajax({
+					url:"/preview",
+					data: input,
+					success: function(data){
+						if (data.conflict){
+							$('#message').text("선택하신 날짜는 이용이 불가능합니다.");
+							$('#message').show();
+							$('#preview_price').hide();
+							$('.reservation-btn').attr('disabled',true)
+						}else{
+							$('#message').hide();
+							$('#preview_price').show();
+							$('.reservation-btn').attr('disabled',false);
+							$('.days').text(days);
+							$('.price_multiple_days').text('￦'+total);
+							$('.total').text('￦'+(total+40000));
+							$('#reservation_total').val(total);
+							console.log(total);
+						}
+					}
+				})
+			}
+		})
+	});
 </script>
