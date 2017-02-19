@@ -1,0 +1,40 @@
+<div class="row">
+	<div class="col-xs-12 ">
+		<div class="room_price clearfix">
+			<div class="col-xs-8">￦<%=@room.price%></div>
+			<div class="col-xs-4 text-right"><span>1박</span></div>
+		</div>
+	</div>
+	<div class="col-xs-12">
+		<div class="form_wrap clearfix">
+			<%=form_for([@room, @room.reservations.new]) do |f|%>
+			<div class="col-xs-6">
+				<label for="reservation_start_date">체크인</label>
+				<%=f.text_field :start_date, placeholder: "년/월/일", class: "form-control"%>
+			</div>
+
+			<div class="col-xs-6">
+				<label for="reservation_end_date">체크아웃</label>
+				<%=f.text_field :end_date, placeholder: "년/월/일", class: "form-control"%>
+			</div>
+			
+			<br>
+			<%=f.hidden_field :room_id, value: @room.id%>
+			<%=f.hidden_field :price, value: @room.price%>
+			<div class="col-xs-12">
+				<%=f.submit "예약하기", class: "btn btn-green reservation-btn"%>
+			</div>			
+			<%end%>
+		</div>
+	</div>
+</div>
+<script>
+	(function(){
+		$('#reservation_start_date').datepicker({
+			dateFormat: 'yyyy/mm/dd'
+		});
+		$('#reservation_end_date').datepicker({
+			dateFormat: 'yyyy/mm/dd'
+		})
+	})()
+</script>

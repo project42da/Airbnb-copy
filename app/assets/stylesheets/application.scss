@@ -199,6 +199,32 @@ input[type="checkbox"]:checked{
 	font-size: 1.1em;
 }
 
+.room_price{
+	background-color: #666;
+	color: #fff;
+	font-size: 1.7em;
+	padding: 8px;
+}
+
+.room_price span{
+	font-size: 0.7em;
+}
+
+#new_reservation label{
+	font-weight: 100;
+	font-size: 1.1em;
+	margin-left: 2px;
+}
+.reservation-btn{
+	margin-top: 10px;
+	width: 100%;
+}
+
+.form_wrap{
+	border: 1px solid #ddd;
+  padding: 20px 0 20px 
+}
+
 /*mobile*/
 @media screen and (max-width: 767px){
 	#toggleLogo, .navbar-nav > .mobileView{
@@ -236,6 +262,10 @@ input[type="checkbox"]:checked{
 
 	.cover-img .btn{
 	  right: 30px;
+	}
+
+	.room_price{
+		margin-top: 10px;
 	}
 }
 

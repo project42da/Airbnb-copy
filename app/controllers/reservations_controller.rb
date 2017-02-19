@@ -3,7 +3,7 @@ class ReservationsController < ApplicationController
 
 	def create
 		@reservation = current_user.reservations.create(reservation_params)
-		redirect_to @reservation.room
+		redirect_to @reservation.room, notice: "성공적으로 예약되었습니다!"
 	end
 
 	private

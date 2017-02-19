@@ -44,6 +44,8 @@ gem "paperclip", "~> 5.0.0"
 
 gem 'geocoder' #영문주소를 좌표값으로 바꿔준다. (굳이 필요없지만 nearbys메서드를 사용하기위해 설치)
 
+gem 'jquery-ui-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
