@@ -45,7 +45,7 @@
 
 			<br>
 			<div class="col-xs-12">
-				<%=f.submit "예약하기", class: "btn btn-green reservation-btn", disabled: 'true'%>
+				<%=f.submit "예약하기", class: "btn btn-green reservation-btn", disabled: true%>
 			</div>			
 			<%end%>
 		</div>
@@ -60,7 +60,7 @@
 	var $start_date,$end_date;
 
 	$(function(){
-
+		
 		unavailableDates = [];
 
 		$.ajax({

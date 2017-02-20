@@ -36,7 +36,7 @@ class RoomsController < ApplicationController
     if current_user.id == @room.user.id
       @photos = @room.photos
     else
-      redirect_to root_path, notice: "수정권한이 없습니다!"  
+      redirect_to root_path, alert: "수정권한이 없습니다!"  
     end
     
   end

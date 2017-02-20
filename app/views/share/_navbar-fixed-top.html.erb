@@ -18,7 +18,7 @@
           </a>
           <ul class="dropdown-menu">
             <li><%=link_to "숙소 등록", new_room_path %></li>
-            <li><%=link_to "숙소 관리"%></li>
+            <li><%=link_to "숙소 관리", rooms_path%></li>
           </ul>
         </li>
         
@@ -29,7 +29,7 @@
         <li><%=link_to "여행"%></li>
         <hr class="mobileView">
         <li class="mobileView"><%=link_to "프로필보기", current_user %></li>
-        <li class="mobileView"><%=link_to "계정관리"%></li>
+        <li class="mobileView"><%=link_to "계정관리", edit_user_registration_path%></li>
         <li class="mobileView"><%=link_to "로그아웃", destroy_user_session_path, method: :delete%></li>
 
         <li class="dropdown mobileHide">
@@ -38,7 +38,7 @@
           </a>
           <ul class="dropdown-menu">
             <li><%=link_to "프로필보기", current_user %></li>
-            <li><%=link_to "계정관리"%></li>
+            <li><%=link_to "계정관리", edit_user_registration_path%></li>
             <li><%=link_to "로그아웃", destroy_user_session_path, method: :delete%></li>
           </ul>
         </li>

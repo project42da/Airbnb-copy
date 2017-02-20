@@ -14,20 +14,21 @@
 				</div>
 				<div class="panel-body">
 					<% @rooms.each do |room|%>
-						<div class="row">
+						<div class="row room_list">
 							<div class="col-md-5">
 								<% if room.photos.length > 0%>
-									<%=image_tag(room.photos[0].image.url(:thumb))%>
+									<%=link_to image_tag(room.photos[0].image.url(:thumb)), room%>
 								<%else%>
 									<%=image_tag("missing", class: "img-responsive")%>
 								<%end%>
 							</div>
 							<div class="col-md-7">
-								<h4><%=room.listing_name%></h4>
+								<h4><%=link_to room.listing_name, room, class: "h4"%></h4>
 								<p>최종 업데이트: <%=room.updated_at.strftime("%Y년 %m월 %d일")%></p>
 								<%=link_to "정보 수정", edit_room_path(room), class: 'btn btn-green'%>
 							</div>
 						</div>
+						<hr>
 					<%end%>
 				</div>
 			</div>

@@ -149,6 +149,13 @@ input[type="checkbox"]:checked{
   width: 100%;
 }
 
+
+/*room index*/
+.room_list{
+	padding: 10px;
+}
+
+/*room show*/
 #preview {
   margin-bottom: 20px;
   margin-left: 0;
@@ -223,6 +230,25 @@ input[type="checkbox"]:checked{
 .form_wrap{
 	border: 1px solid #ddd;
   padding: 20px 0 20px 
+}
+
+#preview_price table{
+	width: 100%;
+	font-size: 1.1em;
+}
+#preview_price table tr {
+	padding: 8px;
+	border-bottom: 1px solid #ccc;
+}
+
+#preview_price th,#preview_price td{
+	padding: 8px;
+}
+#preview_price td{
+	text-align: right;
+}
+#preview_price .last_table_row{
+	border-bottom: 0;
 }
 
 /*mobile*/

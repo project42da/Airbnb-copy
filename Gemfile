@@ -46,6 +46,8 @@ gem 'geocoder' #영문주소를 좌표값으로 바꿔준다. (굳이 필요없�
 
 gem 'jquery-ui-rails'
 
+gem 'date_validator'#date관련 validate를 쉽게할수 있게해줌...근데 미친 이거왜 또하고있냐 아놔
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
