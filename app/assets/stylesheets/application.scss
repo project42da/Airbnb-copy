@@ -272,6 +272,31 @@ input[type="checkbox"]:checked{
 	border-bottom: 0;
 }
 
+
+// user
+.profile_information{
+	font-size: 1.1em;
+}
+
+.profile_room_list{
+	margin-bottom: 20px;
+}
+.profile_room_wrap{
+	position: relative	
+}
+.profile_room_title{
+	position: absolute;
+	color:#fff;
+	bottom: 35px;
+	left: 10px;
+}
+.profile_room_summary{
+	position: absolute;
+	color:#fff;
+	bottom: 10px;
+	left: 10px;
+}
+
 /*mobile*/
 @media screen and (max-width: 767px){
 	#toggleLogo, .navbar-nav > .mobileView{

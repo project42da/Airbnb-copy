@@ -9,20 +9,54 @@
           인증된 정보
         </div>
         <div class="panel-body">
-          인증된 정보 없음
+          <p class="profile_information"><%= raw("이메일 주소 <i class=\"fa fa-check-circle-o\" aria-hidden=\"true\"></i>") if @user.email %></p>
+
+          <p class="profile_information"><%= raw("전화번호 <i class=\"fa fa-check-circle-o\" aria-hidden=\"true\"></i>") if @user.phone_number%></p>
+          <hr>
+          <%if @user.provider == "google_oauth2"%>
+            <p class="btn"><i class="fa fa-google" aria-hidden="true"></i> 구글이메일 인증</p>
+          <%elsif @user.provider == "facebook"%>
+            <p class="btn"><i class="fa fa-facebook" aria-hidden="true"></i> 패이스북 인증</p>
+          <%end%>
+          
+          <%if current_user == @user%>
+          <hr>
+          <p></p><%=link_to "인증 추가", edit_user_registration_path%></p>
+          <%end%>    
         </div>
-        <div class="panel-body">
-          <a href="#">인증 추가</a>
-        </div>
+        
       </div>
     </div>
 
     <div class="col-md-9">
+      <%=link_to "프로필 수정", edit_user_registration_path%>
       <h1>안녕하세요, <%=@user.username%>입니다!</h1>
-      <div class="h5"><%=@user.created_at%></div>
-      <div>
-        <%=link_to "프로필 수정", edit_user_registration_path%>
+      <div class="h4">회원가입: <%=@user.created_at.strftime("%Y년 %m월 %d일")%></div>
+      <p style="min-height: 50px;"><%=@user.description%></p>
+      
+      <div class="row">
+        <h2 class="col-md-12">운영중인 숙소 <span class="small mute">(<%= @user.rooms.length%>)</span></h2>
+        <% @user.rooms.each do |room|%>
+          <div class="col-sm-6">
+            <% if room.photos.length > 0%>
+              <div class="profile_room_list">
+                <div class="profile_room_wrap">
+                  <h4 class="profile_room_title"><%=room.listing_name%></h4>
+                  <h5 class="profile_room_summary">
+                    1박 ￦<%=room.price%> ∙ <%=room.room_type%> ∙ <%=room.home_type%>
+                  </h5>
+                  <%=link_to room do %>
+                    <%= image_tag(room.photos[0].image.url(), class: "img-responsive")%>
+                  <%end%>
+                </div>
+              </div>
+            <%else%>
+              <%=image_tag("missing", class: "img-responsive")%>
+            <%end%>
+          </div>
+        <%end%>
       </div>
+
     </div>
   </div>
 </div>

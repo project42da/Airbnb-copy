@@ -14,12 +14,13 @@
 					운영중인 숙소
 				</div>
 				<div class="panel-body">
-					<% @rooms.each do |room|%>
+				<%if @myrooms.length > 0%>
+					<% @myrooms.each do |room|%>
 						<div class="row room_list">
 							<div class="col-md-5">
 								<% if room.photos.length > 0%>
 									<%=link_to room do %>
-										<%= image_tag(room.photos[0].image.url(), class: "img-responsive")%>
+										<%= image_tag(room.photos[0].image.url(), class: "img-responsive") if room.photos.length > 0 %>
 									<%end%>
 								<%else%>
 									<%=image_tag("missing", class: "img-responsive")%>
@@ -33,6 +34,11 @@
 						</div>
 						<hr>
 					<%end%>
+				<%else%>
+					<p>예정된 숙소가 없습니다.</p>
+					<h3>에어비앤비 호스트가 되어 회원님의 꿈을 실현하세요!</h3>
+					<%=link_to "호스팅하기", new_room_path, class: 'btn btn-lg btn-green'%>
+				<%end%>
 				</div>
 			</div>
 		</div>

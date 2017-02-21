@@ -22,7 +22,7 @@
 							<div class="col-md-5">
 								<% if reservation.room.photos.length > 0%>
 									<%=link_to reservation.room do %>
-										<%= image_tag(reservation.room.photos[0].image.url(), class: "img-responsive")%>
+										<%= image_tag(reservation.room.photos[0].image.url(), class: "img-responsive")if reservation.room.photos.length > 0 %>
 									<%end%>
 								<%else%>
 									<%=image_tag("missing", class: "img-responsive")%>
