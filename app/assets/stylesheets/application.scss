@@ -33,7 +33,9 @@ ul{
 ul>li.h4.active>*{
 	font-weight: 500;
 }
-
+.font-slim{
+	font-weight: 100;
+}
 .avatar-small{
 	width: 26px;
 	height: 26px;
@@ -59,7 +61,7 @@ ul>li.h4.active>*{
 }
 
 #toggleLogo>.caret{
-	position: relative;
+  position: relative;
   right: -35px;
   top: -25px;
 }
@@ -149,6 +151,25 @@ input[type="checkbox"]:checked{
   width: 100%;
 }
 
+/*trip index*/
+.trip_list{
+	margin-bottom: 20px;
+}
+.trip_wrap{
+	position: relative	
+}
+.trip_title{
+	position: absolute;
+	color:#fff;
+	bottom: 35px;
+	left: 30px;
+}
+.trip_summary{
+	position: absolute;
+	color:#fff;
+	bottom: 10px;
+	left: 30px;
+}
 
 /*room index*/
 .room_list{

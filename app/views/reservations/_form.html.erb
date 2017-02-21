@@ -112,6 +112,7 @@
 					data: input,
 					success: function(data){
 						if (data.conflict){
+							// 사이에 예약이 있는 경우
 							$('#message').text("선택하신 날짜는 이용이 불가능합니다.");
 							$('#message').show();
 							$('#preview_price').hide();

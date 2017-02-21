@@ -1,0 +1,42 @@
+<div class="container margin-top">
+	<div class="row">
+		<div class="col-xs-7">
+			<h1>예정된 여행</h1>
+		</div>
+		<div class="col-xs-5">
+			<ul class="text-right">
+				<li class="h4 active"><%=link_to("여행 보기", trips_path)%></li>
+				<li class="h4"><%=link_to("위시리스트")%></li>
+			</ul>
+		</div>
+	</div>
+
+	<hr style="width: 48px; margin-left: 0px;">
+
+	<div class="row">
+		<div class="col-xs-7"><h4>내 여행</h4></div>
+		<div class="col-xs-5 text-right"><h4><%=@trips.length%>개의 예정된 여행</h4></div>
+		<div class="col-xs-12 margin-top" style="padding: 0;">
+			<% @trips.each do |trip|%>
+				<div class="col-sm-6 col-md-4">
+					<% if trip.room.photos.length > 0%>
+						<div class="trip_list">
+							<div class="trip_wrap">
+								<h4 class="trip_title"><%=trip.room.listing_name%></h4>
+								<h5 class="trip_summary">
+									<%=trip.room.room_type%> ∙ <%=trip.start_date.strftime("%m월 %d일")%> - <%=trip.end_date.strftime("%m월 %d일")%>
+								</h5>
+								<%=link_to trip.room do %>
+									<%= image_tag(trip.room.photos[0].image.url(), class: "img-responsive")%>
+								<%end%>
+							</div>
+						</div>
+					<%else%>
+						<%=image_tag("missing", class: "img-responsive")%>
+					<%end%>
+				</div>
+			<%end%>
+		</div>
+
+	</div>
+</div>

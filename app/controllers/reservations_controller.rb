@@ -9,6 +9,7 @@ class ReservationsController < ApplicationController
 	end
 	
 	def preview
+		# input에서 가져온 값들($start_date_get,$end_date_get,room.id)
 		start_date = Date.parse(params[:start_date])
 		end_date = Date.parse(params[:end_date])
 
@@ -28,11 +29,16 @@ class ReservationsController < ApplicationController
 		end
 	end
 
+	def trips
+		@trips = current_user.reservations
+	end	
+
 	private
 
 	def is_conflict(start_date, end_date)
 		room = Room.find(params[:room_id])
 		check = room.reservations.where("? < start_date AND end_date < ?",start_date, end_date)
+		# 파라미터로 받은 날짜 사이에 예약이 있는지 확인
 		check.size > 0 ? true : false
 	end
 
