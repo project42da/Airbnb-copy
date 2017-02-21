@@ -1,6 +1,14 @@
-Airbnb - copy
+Airbnb - copy 
 ---
-Only for Konkuk University Students
+Only for Konkuk University Students :fire:
+
+###Installation
+
+Download or use git.
+```
+git clone https://github.com/project42da/Airbnb-copy.git
+```
+then `bundle install`.
 
 
 - Ruby on Rails(rails version : 5.0.1 / ruby version : 2.3.3)
