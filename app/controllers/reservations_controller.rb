@@ -33,6 +33,10 @@ class ReservationsController < ApplicationController
 		@trips = current_user.reservations
 	end	
 
+	def my_reservations
+		@rooms = current_user.rooms
+	end
+	
 	private
 
 	def is_conflict(start_date, end_date)

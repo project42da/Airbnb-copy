@@ -3,7 +3,8 @@
 		<div class="col-md-3">
 			<ul>
 				<li class="h4 active"><%=link_to("숙소 목록", rooms_path)%></li>
-				<li class="h4"><%=link_to("예약 관리")%></li>
+				<li class="h4"><%=link_to("예약 관리", my_reservations_path)%></li>
+				<%=link_to "새로운 숙소 추가", new_room_path, class: 'btn btn-green'%>
 			</ul>
 			<br>
 		</div>
@@ -17,7 +18,9 @@
 						<div class="row room_list">
 							<div class="col-md-5">
 								<% if room.photos.length > 0%>
-									<%=link_to image_tag(room.photos[0].image.url(:thumb)), room%>
+									<%=link_to room do %>
+										<%= image_tag(room.photos[0].image.url(), class: "img-responsive")%>
+									<%end%>
 								<%else%>
 									<%=image_tag("missing", class: "img-responsive")%>
 								<%end%>
