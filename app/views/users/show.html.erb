@@ -19,10 +19,15 @@
             <p class="btn"><i class="fa fa-facebook" aria-hidden="true"></i> 패이스북 인증</p>
           <%end%>
           
-          <%if current_user == @user%>
-          <hr>
-          <p></p><%=link_to "인증 추가", edit_user_registration_path%></p>
-          <%end%>    
+          <%if current_user%>
+            <%if current_user == @user%>
+              <hr>  
+              <p><%=link_to "인증 추가", edit_user_registration_path%></p>
+            <%else%>
+              <%= link_to "메시지 보내기", contacts_path(sender_id: current_user.id, recipient_id: @user.id), method: 'POST', class: "btn btn-green"%>
+            <%end%>
+          <%end%>
+
         </div>
         
       </div>

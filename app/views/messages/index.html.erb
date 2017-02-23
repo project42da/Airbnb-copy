@@ -1,0 +1,64 @@
+<div class="container margin-top">
+  <div class="row">
+    <div id="compose-message" class="panel panel-default">
+      <div class="panel-heading">
+        <h4>호스트에게 연락하기</h4>
+      </div>
+      
+      <div class="panel-body panel-dark">
+        <div class="col-xs-3 dark-bgc">
+          <div class="text-center">
+            <%=link_to @other do %>
+              <%= image_tag avatar_url(@other), class: "img-circle avatar-xlarge"%>
+            <%end%>
+            <h4 style="overflow-wrap: break-word;"><%=@other.username%></h4>
+          </div>
+          <hr style="width: 48px; margin-left: 0px; height: 2px;">
+
+          <p>
+            다음 내용을 공유해주시기 바랍니다.
+          </p>
+          <ul class="disc">
+            <li><%=@other.username%>님에게 자기 소개를 하세요</li>
+            <li>여행지에 오게 된 이유는 무엇인가요? 누구와 같이 오시나요?</li>
+            <li>이 숙소의 어떤 점이 마음에 드시나요? 말씀해 주세요!</li>
+          </ul>
+          <br>
+        </div>
+
+        <div class="col-xs-9" style="padding: 0 25px;">
+          <h4 class="margin-top">언제 여행하실 계획인가요?</h4>
+          
+          <%=form_for [@contact, @contact.messages.new] do |f|%>
+            <div class="form-group margin-top">
+              <%= f.text_area :content, id:"new_message", placeholder: "메시지 쓰기...", class: "form-control"%>
+            </div>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <div class="actions margin-top">
+              <%= image_tag avatar_url(current_user), class: "img-circle avatar-medium margin-right"%>
+              <%= f.submit "메시지 보내기", class: "btn btn-lg btn-green"%>
+            </div>
+          <%end%>
+
+          <br>
+
+          <div class="well">
+            
+            <%@messages.each do |message|%>
+              <div class="panel">
+                <div class="panel-body">
+                  <strong><%= message.user.username%></strong>
+                  <span class="pull-right"><%= message.message_time%></span>
+                  <div class="row-space-2">
+                    <%= message.content%>
+                  </div>
+                </div>
+              </div>
+            <%end%>
+  
+          </div> <!-- well -->
+        </div> <!-- col-xs-9 -->
+      </div> <!-- panel-body -->
+    </div> <!-- compose-message -->
+  </div>
+</div>

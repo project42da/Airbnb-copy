@@ -20,7 +20,7 @@ class ContactsController < ApplicationController
   private
   
   def contacts_params
-    params.require(:sender_id, :recipient_id)
+    params.permit(:sender_id, :recipient_id)
   end
 
 end

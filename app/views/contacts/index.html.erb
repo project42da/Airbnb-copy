@@ -1,0 +1,41 @@
+<div class="container margin-top">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="well edge">
+        <%if @contacts.length > 0 %>
+        
+        <%@contacts.each do |contact|%>
+          <%other = contact.sender == current_user ? contact.recipient : contact.sender%>
+          
+          <div class="panel">
+            <%=link_to contact_messages_path(contact) do%>
+              <div class="media">
+                <div class="media-left">
+                  <%= image_tag avatar_url(other), class: "img-circle avatar-large media-object"%>
+                </div>
+                <div class="media-body">
+                  <div class="media-heading">
+                    <h4><%= other.username%> <small class="mute"><%= contact.messages.last.message_time%></small></h4>
+                    
+                  </div>
+                  
+                  <p><%= contact.messages.last.content%></p>
+                </div>
+              </div> 
+            <%end%>
+          </div>
+
+        <%end%>
+
+        <%else%>
+          <div class="container text-center">
+            <h3>아직 메시지가 없습니다.</h3>
+            <p>게스트가 연락하거나 예약 요청을 보내면 여기에 메시지가 표시됩니다.</p>
+          </div>
+        <%end%>
+      </div>
+
+    </div>
+  </div>
+</div>
