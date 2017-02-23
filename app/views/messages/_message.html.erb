@@ -1,0 +1,10 @@
+
+  <div class="panel">
+    <div class="panel-body">
+      <%= image_tag avatar_url(message.user), class: "avatar-small img-circle"%> <strong><%= message.user.username%></strong>
+      <span class="pull-right"><%= message.message_time%></span>
+      <div class="row-space-2">
+        <%= message.content%>
+      </div>
+    </div>
+  </div>

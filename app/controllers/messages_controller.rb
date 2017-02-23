@@ -19,7 +19,9 @@ class MessagesController < ApplicationController
     @messages = @contact.messages.order("created_at DESC")
 
     if @message.save
-      redirect_to contact_messages_path(@contact)
+      respond_to do |format|
+        format.js
+      end
     end
     
   end

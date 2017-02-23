@@ -14,7 +14,7 @@
 
         <li class="dropdown mobileHide">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            호스팅
+            호스트
           </a>
           <ul class="dropdown-menu">
             <li><%=link_to "숙소 등록", new_room_path %></li>
@@ -26,6 +26,7 @@
         <li><a data-toggle="modal" data-target="#signupModal" style="cursor: pointer;">회원가입</a></li>
         <li><a data-toggle="modal" data-target="#loginModal" style="cursor: pointer;">로그인</a></li>
       <%else%>
+        <li><%=link_to("메시지", contacts_path)%></li>
         <li><%=link_to("여행", trips_path)%></li>
         <hr class="mobileView">
         <li class="mobileView"><%=link_to "프로필보기", current_user %></li>

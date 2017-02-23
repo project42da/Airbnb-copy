@@ -48,6 +48,9 @@ gem 'jquery-ui-rails'
 
 gem 'date_validator'#date관련 validate를 쉽게할수 있게해줌...근데 미친 이거왜 또하고있냐 아놔
 
+gem "private_pub"
+gem "thin"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

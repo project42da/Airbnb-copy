@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require private_pub
 //= require toastr
 //= require bootstrap-sprockets
 //= require turbolinks
