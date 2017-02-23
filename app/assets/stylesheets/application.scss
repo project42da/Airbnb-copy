@@ -39,7 +39,9 @@ ul.disc{
 ul>li.h4.active>*{
 	font-weight: 500;
 }
-
+.font-green{
+  color: #00a699;
+}
 .well.edge{
   border-radius:0;
   background-color: #FFF;
@@ -74,6 +76,30 @@ ul>li.h4.active>*{
 .avatar-xlarge{
   width: 120px;
   height: 120px;
+}
+.btn-wide{
+  width: 100%;
+  padding:15px 30px;
+}
+.btn-facebook{
+  background-color: #4568b2;
+  color: #fff;
+}
+.btn-facebook:focus, .btn-facebook.active, .btn-facebook:hover{
+  background-color: #4568b2;
+  color: #fff;
+}
+
+.btn-google{
+  background-color: #FFF;
+  border: 1px solid #ccc;
+  color: #444;
+}
+
+.btn-google:focus, .btn-google.active, .btn-google:hover{
+  background-color: #FFF;
+  border: 1px solid #ccc;
+  color: #444;
 }
 
 .btn-green{
@@ -173,7 +199,6 @@ input[type="checkbox"]:checked{
 	cursor: pointer;
 	display: block;
 }
-
 .panel-body.panel-dark{
   padding: 0;
   height: 100%;
@@ -189,6 +214,32 @@ input[type="checkbox"]:checked{
 .panel-heading.preview img{
   width: 100%;
 }
+
+/* login modal*/
+.signup-or-separator{
+  background: none;
+  height: 34px;
+  position: relative;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.signup-or-separator--text{
+  background-color: #fff;
+  display: inline-block;
+  padding: 8px;
+}
+
+.signup-or-separator hr{
+  margin: -24px auto 10px;
+  width: 100%;
+}
+
+.form-control.form-sign{
+  padding:30px 15px;
+  margin-bottom: 5px;
+}
+
 /*message*/
 #compose-message{
 
@@ -345,6 +396,9 @@ input[type="checkbox"]:checked{
 	#toggleLogo, .navbar-nav > .mobileView{
 		display:block;
 	}
+  .mobileHide{
+    display: none;
+  }
 	#toggleLogo>.caret.rotate{
 		transform: rotate(180deg);
 		transition: 0.3s;
@@ -386,9 +440,13 @@ input[type="checkbox"]:checked{
 
 /*computer*/
 @media (min-width: 768px){
+  .mobileView{
+    display: none;
+  }
 	#toggleLogo, .navbar-nav > .mobileView{
 		display:none;
 	}
+
 	#notToggleLogo, .navbar-nav > .mobileHide{
 		display:block;
 	}
@@ -403,7 +461,18 @@ input[type="checkbox"]:checked{
     top: -2px;
 	}
 	.modal-dialog {
-    width: 700px;
+    width: 450px;
     margin: 60px auto;
 	}
+  .modal-body{
+    padding: 30px;
+  }
+  .modal-body>.btn{
+    position: relative;
+  }
+  .modal-body>.btn>i{
+    position: absolute;
+    top: 14px;
+    left: 20px;
+  }
 }
