@@ -29,7 +29,7 @@ class Room < ApplicationRecord
   validates :address, presence: true
   validates :price, presence: true
 
-  def average_rating=(key)
-    reviews.count == 0 ? 0 : reviews.average(key).round(1)
+  def average_rating(key)
+    reviews.count == 0 ? 0 : reviews.average(key).to_i.round(1)
   end
 end

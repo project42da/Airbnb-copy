@@ -7,6 +7,7 @@
         <%if @contacts.length > 0 %>
         
         <%@contacts.each do |contact|%>
+          <%if contact.messages.length > 0%>
           <%other = contact.sender == current_user ? contact.recipient : contact.sender%>
           
           <div class="panel">
@@ -18,12 +19,13 @@
                 <div class="media-body">
                   <div class="media-heading">
                     <h4><%= other.username%> <small class="mute"><%= contact.messages.last.message_time%></small></h4>
-                    
+
                   </div>
                   
                   <p><%= contact.messages.last.content%></p>
                 </div>
-              </div> 
+              </div>
+              <%end%>
             <%end%>
           </div>
 

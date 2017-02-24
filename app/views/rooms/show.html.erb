@@ -123,10 +123,11 @@
 
 <!-- reviews -->
 <div class="container review">
-	
+	<%=render "reviews/list"%>
+	<%=render "reviews/form" if @booked && !@hasReview%>
 </div>
 
-
+<hr>
 <!-- map -->
 <div class="container">
 	<div class="row">

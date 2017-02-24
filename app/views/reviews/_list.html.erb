@@ -1,0 +1,33 @@
+<div class="row">
+<% if @reviews.blank? %>
+  <div class="col-md-12"><h3>회원님의 후기를 기다립니다.</h3></div>
+<%else%>
+  <h4>후기 33개</h4>
+  <hr>
+
+  <div class="col-md-2 mobileHide">요약</div>
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-6">
+        <div><%=@reviews.average_rating(:location)%></div>
+        <div><%=@reviews.average_rating(:value)%></div>
+      </div>
+      <div class="col-md-6">
+        <div><%=@reviews.average_rating(:accuracy)%></div>
+        <div><%=@reviews.average_rating(:cleanliness)%></div>
+      </div>
+    </div>  
+  </div>
+  
+
+  <%= @reviews.order("id desc").each do |review|%>
+    <%= image_tag avatar_url(review.user), class: "img-circle avatar-small"%>
+    <%= review.username%>
+    <%= review.comment%>
+    <%= review.created_at.strftime("%m %d")%>
+    <%if review.user_id == current_user%>
+      <%=link_to "리뷰삭제", [@room, review], method: :DELETE, data: {confirm: "회원님의 리뷰는 다른 회원님들께 큰 도움이 됩니다. 정말 삭제하시겠습니까?"}%>
+    <%end%>
+  <%end%>
+<%end%>
+</div>

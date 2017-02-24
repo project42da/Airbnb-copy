@@ -1,0 +1,12 @@
+<%=form_for([@room, @room.reviews.new]) do |f|%>
+  <%=f.text_field :value%>
+  <%=f.text_field :cleanliness%>
+  <%=f.text_field :location%>
+  <%=f.text_field :accuracy%>
+  
+  <div class="review_textarea row">
+    <%=f.text_area :comment, class: "form-control col-xs-10"%>
+    <%=f.submit "리뷰 작성하기", class: "btn btn-green col-xs-2"%>
+  </div>
+  <%=f.hidden_field :room_id, value: @room.id%>
+<%end%>
