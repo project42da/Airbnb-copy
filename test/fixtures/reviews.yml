@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  comment: MyText
+  cleanliness: 1
+  location: 1
+  accuracy: 1
+  value: 1
+  room: one
+  user: one
+
+two:
+  comment: MyText
+  cleanliness: 1
+  location: 1
+  accuracy: 1
+  value: 1
+  room: two
+  user: two
