@@ -1,33 +1,50 @@
-<div class="row">
-<% if @reviews.blank? %>
-  <div class="col-md-12"><h3>회원님의 후기를 기다립니다.</h3></div>
-<%else%>
-  <h4>후기 33개</h4>
-  <hr>
 
+<% if @reviews.blank? %>
+<div class="row">
+  <div class="col-md-12"><h3>회원님의 후기를 기다립니다.</h3></div>
+</div>
+<%else%>
+<div class="row">
+  <h4 class="col-md-12">후기 33개</h4>
+  <hr class="col-md-8">
+</div>
+<div class="row">
   <div class="col-md-2 mobileHide">요약</div>
   <div class="col-md-6">
     <div class="row">
       <div class="col-md-6">
-        <div><%=@reviews.average_rating(:location)%></div>
-        <div><%=@reviews.average_rating(:value)%></div>
+        <div>위치 <%=@room.average_rating(:location)%></div>
+        <div>가치 <%=@room.average_rating(:value)%></div>
       </div>
       <div class="col-md-6">
-        <div><%=@reviews.average_rating(:accuracy)%></div>
-        <div><%=@reviews.average_rating(:cleanliness)%></div>
+        <div>정확성 <%=@room.average_rating(:accuracy)%></div>
+        <div>청결도 <%=@room.average_rating(:cleanliness)%></div>
       </div>
-    </div>  
+    </div>
   </div>
-  
-
-  <%= @reviews.order("id desc").each do |review|%>
-    <%= image_tag avatar_url(review.user), class: "img-circle avatar-small"%>
-    <%= review.username%>
-    <%= review.comment%>
-    <%= review.created_at.strftime("%m %d")%>
-    <%if review.user_id == current_user%>
-      <%=link_to "리뷰삭제", [@room, review], method: :DELETE, data: {confirm: "회원님의 리뷰는 다른 회원님들께 큰 도움이 됩니다. 정말 삭제하시겠습니까?"}%>
-    <%end%>
-  <%end%>
+  <hr class="col-md-8">
+</div>
 <%end%>
+
+
+<div class="row">
+  <div class="col-md-8">
+  <% @reviews.order("id desc").each do |review|%>
+    <div class="row">
+      <div class="col-md-3 text-center">
+        <%= image_tag avatar_url(review.user), class: "img-circle avatar-large"%>
+        <h4 style="word-wrap: break-word; font-weight: 100;"><%= review.user.username%></h4>
+      </div>
+      <div class="col-md-9">
+        <p><%= review.comment%></p>
+        
+        <h5><%= review.created_at.strftime("%Y년 %m월 %d일")%></h5>
+        <%if review.user_id == current_user%>
+          <%=link_to "리뷰삭제", [@room, review], method: :DELETE, data: {confirm: "회원님의 리뷰는 다른 회원님들께 큰 도움이 됩니다. 정말 삭제하시겠습니까?"}%>
+        <%end%>
+      </div>
+      <hr class="col-md-9 col-md-offset-3" style="margin-top: 0;">
+    </div>
+  <%end%>
+  </div>
 </div>

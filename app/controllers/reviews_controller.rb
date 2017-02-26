@@ -4,9 +4,9 @@ class ReviewsController < ApplicationController
     @review = current_user.reviews.build(review_params)
     
     if @review.save
-      redirect_do @review.room, notice: "댓글을 등록했어요!"
+      redirect_to @review.room, notice: "댓글을 등록했어요!"
     else
-      redirect_do @review.room, alert: "댓글 내용을 입력하세요!"
+      redirect_to @review.room, alert: "댓글 내용을 입력하세요!"
     end
     
   end
@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
     room = @review.room
     @review.destroy
 
-    redirect_do room, notice: "댓글을 삭제했습니다."
+    redirect_to room, notice: "댓글을 삭제했습니다."
   end
 
   private
