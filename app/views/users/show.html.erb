@@ -39,6 +39,7 @@
       <div class="h4">회원가입: <%=@user.created_at.strftime("%Y년 %m월 %d일")%></div>
       <p style="min-height: 50px;"><%=@user.description%></p>
       
+      <!-- 운영중인 숙소 -->
       <div class="row">
         <h2 class="col-md-12">운영중인 숙소 <span class="small mute">(<%= @user.rooms.length%>)</span></h2>
         <% @user.rooms.each do |room|%>
@@ -61,7 +62,39 @@
           </div>
         <%end%>
       </div>
+      
+      <!-- 후기 -->
+      <div class="row">
+        <%review_count = 0%>
+        <%@user.rooms.each do |room|%>
+          <%review_count+=room.reviews.length%>
+        <%end%>
+        
+        <h2 class="col-md-12">후기 <span class="small mute">(<%=review_count%>)</span></h2>
+        <h4 class="col-md-12">게스트후기</h4>
 
+        <div class="col-md-12 margin-top clearfix" style="padding: 0;">
+          <%@user.rooms.each do |room|%>
+            <%room.reviews.each do |review|%>
+
+                <div class="col-md-3 text-center">
+                  <%= image_tag avatar_url(review.user), class: "img-circle avatar-large"%>
+                  <h4 style="word-wrap: break-word; font-weight: 100;"><%= review.user.username%></h4>
+                </div>
+                <div class="col-md-9">
+                  <p><%= review.comment%></p>
+                  
+                  <h5><%= review.created_at.strftime("%Y년 %m월 %d일")%></h5>
+                  <%if review.user_id == current_user%>
+                    <%=link_to "리뷰삭제", [@room, review], method: :DELETE, data: {confirm: "회원님의 리뷰는 다른 회원님들께 큰 도움이 됩니다. 정말 삭제하시겠습니까?"}%>
+                  <%end%>
+                </div>
+                <hr class="col-md-9 col-md-offset-3" style="margin-top: 0;">
+            <%end%>
+          <%end%>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>

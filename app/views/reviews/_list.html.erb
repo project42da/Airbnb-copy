@@ -13,12 +13,17 @@
   <div class="col-md-6">
     <div class="row">
       <div class="col-md-6">
-        <div>위치 <%=@room.average_rating(:location)%></div>
-        <div>가치 <%=@room.average_rating(:value)%></div>
+        <% location = @room.average_rating(:location)%>
+        <% value = @room.average_rating(:value)%>
+        <% accuracy = @room.average_rating(:accuracy)%>
+        <% cleanliness = @room.average_rating(:cleanliness)%>
+
+        <div><strong>위치</strong> <div id="star_location" style="float: right;"></div></div>
+        <div><strong>가치</strong> <div id="star_value" style="float: right;"></div></div>
       </div>
       <div class="col-md-6">
-        <div>정확성 <%=@room.average_rating(:accuracy)%></div>
-        <div>청결도 <%=@room.average_rating(:cleanliness)%></div>
+        <div><strong>정확성</strong> <div id="star_accuracy" style="float: right;"></div></div>
+        <div><strong>청결도</strong> <div id="star_cleanliness" style="float: right;"></div></div>
       </div>
     </div>
   </div>
@@ -48,3 +53,28 @@
   <%end%>
   </div>
 </div>
+
+
+
+<script>
+  $('#star_value').raty({
+    score: <%=value%>,
+    half: true,
+    readOnly: true
+  });
+  $('#star_cleanliness').raty({
+    score: <%=cleanliness%>,
+    half: true,
+    readOnly: true
+  }); 
+  $('#star_location').raty({
+    score: <%=location%>,
+    half: true,
+    readOnly: true
+  }); 
+  $('#star_accuracy').raty({
+    score: <%=accuracy%>,
+    half: true,
+    readOnly: true
+  }); 
+</script>

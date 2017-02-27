@@ -1,12 +1,41 @@
 <%=form_for([@room, @room.reviews.new]) do |f|%>
-  <%=f.text_field :value%>
-  <%=f.text_field :cleanliness%>
-  <%=f.text_field :location%>
-  <%=f.text_field :accuracy%>
+<div class="starwrap row">
+
+  <div class="col-md-2 mobileHide">평가</div>
+  <div class="col-md-3">
+    가치 <div id="value" class="star"></div>
+    청결도 <div id="cleanliness" class="star"></div>
+  </div>
+  <div class="col-md-3">
+    위치 <div id="location" class="star"></div>
+    정확성 <div id="accuracy" class="star"></div>
+  </div>
   
-  <div class="review_textarea row">
-    <%=f.text_area :comment, class: "form-control col-xs-10"%>
-    <%=f.submit "리뷰 작성하기", class: "btn btn-green col-xs-2"%>
+</div>
+<div class="row">
+  <div class="review_textarea col-md-8">
+    <%=f.text_area :comment, class: "form-control"%>
+    <%=f.submit "리뷰 작성하기", class: "btn btn-green"%>
   </div>
   <%=f.hidden_field :room_id, value: @room.id%>
+</div>
 <%end%>
+
+<script>
+  $('#value').raty({
+    score: 5,
+    scoreName: "review[value]"
+  });
+  $('#cleanliness').raty({
+    score: 5,
+    scoreName: "review[cleanliness]"
+  }); 
+  $('#location').raty({
+    score: 5,
+    scoreName: "review[location]"
+  }); 
+  $('#accuracy').raty({
+    score: 5,
+    scoreName: "review[accuracy]"
+  }); 
+</script>
