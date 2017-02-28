@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, except: [:notify]
 
 	def preload
 		room = Room.find(params[:room_id])
@@ -23,14 +23,42 @@ class ReservationsController < ApplicationController
 	def create
 		@reservation = current_user.reservations.build(reservation_params)
 		if @reservation.save
-			redirect_to @reservation.room, notice: "성공적으로 예약되었습니다!"	
+			values = {
+				business: "project42da-facilitator@naver.com",
+				cmd: '_xclick',
+				upload: 1,
+				notify_url: "#{Rails.application.secrets.app_host}/notify",
+				amount: (@reservation.total+40000)/1000,
+				item_name: @reservation.room.listing_name,
+				item_number: @reservation.id,
+				quatity: '1',
+				return: "#{Rails.application.secrets.app_host}/trips"
+			}
+
+			redirect_to "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
 		else
 			redirect_to @reservation.room, alert: "잘못된 날짜 이거나, 날짜를 선택하지 않았습니다."
 		end
 	end
 
+	protect_from_forgery except: [:notify]
+	def notify
+		params.permit!
+		status = params[:payment_status]
+		reservation = Reservation.find(params[:item_number])
+
+		if status == "Completed"
+      reservation.update_attributes(status: true)
+    else
+    	reservation.destroy
+    end
+
+		render nothing: true
+	end
+
+	protect_from_forgery except: [:trips]
 	def trips
-		@trips = current_user.reservations
+		@trips = current_user.reservations.where("status = ?", true)
 	end	
 
 	def my_reservations

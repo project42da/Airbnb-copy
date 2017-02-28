@@ -18,26 +18,28 @@
 				<%if @rooms.length > 0%>
 					<% @rooms.each do |room|%>
 						<%room.reservations.each do |reservation|%>
-						<div class="row room_list">
-							<div class="col-md-5">
-								<% if reservation.room.photos.length > 0%>
-									<%=link_to reservation.room do %>
-										<%= image_tag(reservation.room.photos[0].image.url(), class: "img-responsive")if reservation.room.photos.length > 0 %>
-									<%end%>
-								<%else%>
-									<%=image_tag("missing", class: "img-responsive")%>
-								<%end%>
-							</div>
-							<div class="col-md-7">
-								<h4><%=link_to reservation.room.listing_name, room, class: "h4"%></h4>
-								<p>기간: <%=reservation.start_date.strftime("%m월 %d일")%> - <%=reservation.end_date.strftime("%m월 %d일")%></p>
-								<h4>예상수익 : ￦<%=reservation.total%></h4>
-								<%=link_to reservation.user do%>
-									<%=image_tag(avatar_url(reservation.user), class: "img-circle avatar-small")%>
-								<%end%>
-							</div>
-						</div>
-						<hr>
+							<%if reservation.status%>
+								<div class="row room_list">
+									<div class="col-md-5">
+										<% if reservation.room.photos.length > 0%>
+											<%=link_to reservation.room do %>
+												<%= image_tag(reservation.room.photos[0].image.url(), class: "img-responsive")if reservation.room.photos.length > 0 %>
+											<%end%>
+										<%else%>
+											<%=image_tag("missing", class: "img-responsive")%>
+										<%end%>
+									</div>
+									<div class="col-md-7">
+										<h4><%=link_to reservation.room.listing_name, room, class: "h4"%></h4>
+										<p>기간: <%=reservation.start_date.strftime("%m월 %d일")%> - <%=reservation.end_date.strftime("%m월 %d일")%></p>
+										<h4>예상수익 : ￦<%=reservation.total%></h4>
+										<%=link_to reservation.user do%>
+											<%=image_tag(avatar_url(reservation.user), class: "img-circle avatar-small")%>
+										<%end%>
+									</div>
+								</div>
+								<hr>
+							<%end%>
 						<%end%>
 					<%end%>
 				<%else%>
