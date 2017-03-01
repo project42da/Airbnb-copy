@@ -1,8 +1,13 @@
-Airbnb - copy 
+Airbnb - copy
 ---
 Only for Konkuk University Students :fire:
 
-###Installation
+![](./airbnb-img.png)
+
+This is a ROR project that copied Airbnb page. Added Comments and Commit Messages to help students understand.(KOR)
+
+
+### Installation
 
 Download `zip` or use `git`.
 ```
@@ -12,8 +17,7 @@ then `bundle install`.
 
 
 
-
-###Gems
+### Gems
 
 - Ruby on Rails(rails version : 5.0.1 / ruby version : 2.3.3)
 - bootstrap-sass
@@ -25,3 +29,6 @@ then `bundle install`.
 - geocoder(only of nearbys)
 - jquery-ui-rails
 - date_validator
+- private_pus
+- thin
+- searchkick
