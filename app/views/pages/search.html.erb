@@ -1,16 +1,7 @@
 <div class="container">
-  <div class="jumbotron">
-    <h1><strong class="font-green strong">애어비앤비</strong> 전 세계의 독특한 숙소를<br class="mobileHide">
-    예약하고 살아보는 여행을 해 보세요.</h1>
-  </div>
-  <div class="search_wrap">
-    <%=form_tag :search, role: "search", method: :get do%>
-      <%=text_field_tag :search, params[:search]%>
-      <%=submit_tag "검색"%>
-    <%end%>
-  </div>
-
   <div class="row">
+    <%if @rooms.length >0%>
+
     <%@rooms.each do |room|%>
       <div class="col-md-4">
       <% location = room.average_rating(:location)%>
@@ -38,6 +29,9 @@
       <%end%>
 
       </div>
+    <%end%>
+    <%else%>
+      결과가 업습니다.
     <%end%>
   </div>
 </div>

@@ -51,6 +51,8 @@ gem 'date_validator'#date관련 validate를 쉽게할수 있게해줌...근데 �
 gem "private_pub"
 gem "thin"
 
+gem 'searchkick' #검색기능. location기능이 있는줄 알았다면 DB를 좀더 이쁘게 짰을것이고, geocoder를 안썼을지도 모른다.
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

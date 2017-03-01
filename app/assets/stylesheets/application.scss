@@ -27,6 +27,14 @@
 body,a{
 	color:#484848;
 }
+strong{
+  font-weight: 500;
+}
+a:hover, a:focus{
+  color:#484848;
+  text-decoration: none;
+}
+
 ul{
 	list-style: none;
 }
@@ -38,6 +46,18 @@ ul.disc{
 
 ul>li.h4.active>*{
 	font-weight: 500;
+}
+.container .jumbotron, .container-fluid .jumbotron{
+  padding-left:0;
+  padding-right:0;
+}
+.jumbotron{
+  background-color: #FFF;
+  margin-bottom: 0;
+}
+.jumbotron>h1{
+  font-size: 48px;
+  font-weight:100;
 }
 .font-green{
   color: #00a699;
@@ -367,7 +387,7 @@ input[type="checkbox"]:checked{
 }
 
 // review
-.fa-star, .fa-star-o{
+.fa-star, .fa-star-o, .fa-star-half-o{
   color: #00a699;
 }
 

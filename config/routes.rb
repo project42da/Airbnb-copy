@@ -30,4 +30,6 @@ Rails.application.routes.draw do
 	
   post "/trips" => "reservations#trips"
   post "/notify" => "reservations#notify"
+
+  get '/search' => "pages#search"
 end
