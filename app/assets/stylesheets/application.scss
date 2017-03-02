@@ -164,6 +164,30 @@ ul.navbar-nav{
 	padding-bottom: 0;
 }
 
+#search_wrap.well{
+  box-shadow:none;
+  background-color: #FFF;
+  letter-spacing: -0.5px;
+  padding-bottom: 15px;
+
+  label{
+    width: 100%;
+    font-weight: 100;
+    margin-bottom: 0;
+  }
+  svg{
+    width: 15px;
+  }
+  input[type="text"]{
+    font-size: 19px;
+    width: 100%;
+    border: 0;
+  }
+  input[type="text"].check_in_out{
+    width: 40%;
+  }
+}
+
 label {
 	font-size: 1.2em;
 }
@@ -416,9 +440,27 @@ input[type="checkbox"]:checked{
 }
 
 /*mobile*/
+@media screen and (max-width: 650px){
+  .jumbotron>h1{
+    font-size: 25px;
+    font-weight:100;
+  }
+  #search_wrap .action svg{
+    margin: 0 auto;
+  }
+  .small_mobile_show{
+    display: block !important;
+  }
+  .small_mobile_hide{
+    display: none;
+  }
+
+}
+
+/*mobile + table*/
 @media screen and (max-width: 767px){
 	#toggleLogo, .navbar-nav > .mobileView{
-		display:block;
+		display: block;
 	}
   .mobileHide{
     display: none;
@@ -439,6 +481,11 @@ input[type="checkbox"]:checked{
   }
   hr.mobileView{
   	margin: 10px 20px;
+  }
+  
+  // index page search
+  #search_wrap.well{
+
   }
 
   .new-room .panel{
@@ -464,7 +511,7 @@ input[type="checkbox"]:checked{
 
 /*computer*/
 @media (min-width: 768px){
-  .mobileView{
+  .small_mobile_show, .mobileView{
     display: none;
   }
 	#toggleLogo, .navbar-nav > .mobileView{

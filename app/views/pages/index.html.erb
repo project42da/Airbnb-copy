@@ -1,15 +1,32 @@
 <div class="container">
+
   <div class="jumbotron">
     <h1><strong class="font-green strong">애어비앤비</strong> 전 세계의 독특한 숙소를<br class="mobileHide">
     예약하고 살아보는 여행을 해 보세요.</h1>
   </div>
-  <div class="search_wrap">
+  <div id="search_wrap" class="clearfix well">
     <%=form_tag :search, role: "search", method: :get do%>
-      <%=text_field_tag :search, params[:search]%>
-      <%=submit_tag "검색"%>
+      <div class="col-xs-10 col-sm-4">
+        <label for="search" class="small_mobile_hide">위치</label>
+        <%=text_field_tag :search, params[:search], placeholder: "목적지, 도시명, 주소"%>  
+      </div>
+      
+      <div class="col-sm-6 mobileHide">
+        <label for="start_date">날짜</label>
+        <%=text_field_tag :start_date, params[:start_date], placeholder: "체크인", class: "check_in_out"%>
+        <svg viewBox="0 0 1000 1000"><path d="M694.4 242.4l249.1 249.1c11 11 11 21 0 32L694.4 772.7c-5 5-10 7-16 7s-11-2-16-7c-11-11-11-21 0-32l210.1-210.1H67.1c-13 0-23-10-23-23s10-23 23-23h805.4L662.4 274.5c-21-21.1 11-53.1 32-32.1z"></path></svg>
+        <%=text_field_tag :end_date, params[:end_date], placeholder: "체크아웃", class: "check_in_out"%>
+      </div>
+      <div class="action col-xs-2 col-sm-2">
+        <%=submit_tag "검색", class: "btn btn-lg btn-green font-slim mobileView small_mobile_hide"%>
+        <%=submit_tag "숙소 검색", class: "btn btn-lg btn-green font-slim mobileHide"%>
+        <svg class="mobileHide small_mobile_show" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="fill:#000000;height:24px;width:24px;"><path fill-rule="evenodd" d="M23.53 22.47l-6.807-6.808A9.455 9.455 0 0 0 19 9.5 9.5 9.5 0 1 0 9.5 19c2.353 0 4.502-.86 6.162-2.277l6.808 6.807a.75.75 0 0 0 1.06-1.06zM9.5 17.5a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"></path></svg>
+      </div>
     <%end%>
   </div>
 
+
+<!-- 베너 -->
   <div class="row">
     <%@rooms.each do |room|%>
       <div class="col-md-4">
@@ -42,3 +59,28 @@
   </div>
 </div>
 
+<script>
+  $(function(){
+    var $start_date = $('#start_date');
+    $start_date.datepicker({
+      dateFormat: 'yy/mm/dd',
+      minDate: 0,
+      maxDate: '3m',
+      onSelect: function(selected){
+        $('#end_date').datepicker('option', 'minDate', selected);
+      }
+    });
+
+    var $end_date = $('#end_date');
+    $end_date.datepicker({
+      dateFormat: 'yy/mm/dd',
+      minDate: 0,
+      maxDate: '3m',
+      onSelect: function(selected){
+        $('#start_date').datepicker('option', 'maxDate', selected);
+      }
+    });
+  });
+
+
+</script>
