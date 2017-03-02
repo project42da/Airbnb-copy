@@ -1,5 +1,6 @@
 class Room < ApplicationRecord
-  searchkick
+  searchkick word_start: [:listing_name, :kor_address], 
+             word_middle: [:listing_name, :kor_address]
   
   belongs_to :user
   has_many :photos

@@ -2,7 +2,7 @@
   <div class="row">
     <%if @rooms.length >0%>
 
-    <%@rooms.each do |room|%>
+    <%= @rooms.each do |room|%>
       <div class="col-md-4">
       <% location = room.average_rating(:location)%>
       <% value = room.average_rating(:value)%>
