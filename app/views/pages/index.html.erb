@@ -28,6 +28,9 @@
 
 <!-- 베너 -->
   <div class="row">
+    <div class="col-md-12">
+      <h4 class="margin-top margin-bottom">숙소</h4>
+    </div>
     <%@rooms.each do |room|%>
       <div class="col-md-4">
       <% location = room.average_rating(:location)%>
@@ -57,6 +60,31 @@
       </div>
     <%end%>
   </div>
+  
+  <br>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h4 class="margin-top margin-bottom">인기 여행지</h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="container">
+      <ul class="content-slider">
+      <%@cities.each do |city|%>
+        <%=link_to search_path(search: city) do %>
+          <li style="width: 170px;">
+            <%= image_tag city+'.jpg', class: "img-responsive" %>
+            <h5>로스엔젤레스</h5>
+          </li>
+          <%end%>
+        <%end%>
+      </ul>
+
+    </div>
+  </div>
+
 </div>
 
 <script>
@@ -83,4 +111,27 @@
   });
 
 
+</script>
+
+
+
+
+<!--슬라이더 script-->
+<script>
+  
+$(document).ready(function() {
+  /* #autoWidth 였지만, 전체페이지에 자바스크립트가 동작하게 하기위해 .content-slider로 바꿈 아래도 마찬가지 */
+    $('.content-slider').lightSlider({
+        autoWidth:true,
+        slideMargin: 15,
+        loop:false,
+        pager:false,
+        prevHtml:'<i class="fa fa-chevron-left" aria-hidden="true"></i>',
+        nextHtml:'<i class="fa fa-chevron-right" aria-hidden="true"></i>',
+        onSliderLoad: function() {
+            $('.content-slider').removeClass('cS-hidden');
+        } 
+    }).goToSlide(0);
+  
+  });
 </script>

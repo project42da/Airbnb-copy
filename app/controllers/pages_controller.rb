@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   def index
     @rooms = Room.all
+    @cities = %W(la london miami paris 서울 tokyo capetown detroit firenze habana)
   end
 
   def search
