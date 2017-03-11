@@ -146,7 +146,7 @@
 
 <!-- nearby -->
 
-<div class="container">
+<div id="nearby_rooms" class="container">
 	<div class="row">
 		<div class="col-md-12">
 			<br>
@@ -158,7 +158,13 @@
 			<div class="col-md-4">
 				<div class="panel panel-default">
 					<div class="panel-heading preview">
-						<%=image_tag room.photos[0].image.url(:medium)%>
+						
+						<% if room.photos.length > 0%>
+							<%=image_tag room.photos[0].image.url(:medium)%>
+						<%else%>
+							<%=image_tag("room_default_no_photos")%>
+						<%end%>
+
 					</div>
 					<div class="panel-body">
 						<h4><%=link_to room.listing_name, room%></h4>
@@ -173,3 +179,23 @@
 
 <hr>
 
+<script>
+
+$(document).ready(function() {
+	var $sticker = $('#sticker'),
+			$window = $(window);
+
+  $window.resize(function() {
+
+    if(false == $sticker.hasClass('sticker') && $window.width() >= 990) {
+      $sticker.addClass('sticker');
+      $(".sticker").sticky({topSpacing:0});
+    }
+
+    if(true == $sticker.hasClass('sticker') && $window.width() < 990) {
+      $sticker.removeClass('sticker');
+    }
+  });
+
+});
+</script>

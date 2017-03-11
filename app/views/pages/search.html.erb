@@ -2,7 +2,7 @@
   <div class="row">
     <%if @rooms.length >0%>
 
-    <%= @rooms.each do |room|%>
+    <% @rooms.each do |room|%>
       <div class="col-md-4">
       <% location = room.average_rating(:location)%>
       <% value = room.average_rating(:value)%>
@@ -11,21 +11,17 @@
       <% total = (location+value+accuracy+cleanliness)/4%>
       
       <%=link_to room do%>
-        <%= image_tag(room.photos[0].image.url(), class: "img-responsive")%>
+        <% if room.photos.length > 0%>
+          <%= image_tag(room.photos[0].image.url(), class: "img-responsive", style: "background: #ddd;")%>
+        <%else%>
+          <%=image_tag("room_default_no_photos", class: "img-responsive", style: "background: #ddd;")%>
+        <%end%>
         <div style="margin-top:10px;">
           <strong>￦<%=room.price%> <%=room.room_type%> ∙ 침대 <%=room.bed_room%>개</strong>
           <p style="margin-bottom: 0;"><%= room.listing_name%></p>
-          <div id="star_value"><small class="mute">후기 <%=room.reviews.length%>개</small>
-          </div>
+          <small class="mute">후기 <%=room.reviews.length%>개</small>
         </div>
 
-        <script>
-          $('#star_value').raty({
-            score: <%= total%>,
-            half: true,
-            readOnly: true
-          });
-        </script>
       <%end%>
 
       </div>
